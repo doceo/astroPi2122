@@ -11,7 +11,11 @@ The idea is to photograph with the infrared camera an area with the  presence of
 ## File
 
 /images
+
 main.py
+funcions.py
+
+
 
 
 ## Hardware
