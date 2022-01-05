@@ -67,3 +67,6 @@ for img, label in train_dataloader:
         break
 t1 = time.time()
 print("10 fetch: %s" % (t1 - t0))
+
+#repository potenzialmente utile per la realizzazione di questo metodo.
+#https://github.com/arunnthevapalan/day-night-classifier
