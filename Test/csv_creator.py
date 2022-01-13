@@ -22,4 +22,4 @@ data = (
   temperature,
   humidity,
 )
-add_csv_data(data_file, data)
+add_csv_data(data_file, data)'''
