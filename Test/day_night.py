@@ -2,7 +2,7 @@
 humidity, pressure) and the Inertial Measurement Unit (IMU) (acceleration, orientiation). Additional documentation is
 available for interacting with the light and colour sensor. You can also explore the wide range of Sense HAT projects
 available from the Raspberry Pi Foundation. Through Sense HAT we can detect if the camera is framing a dark or
-illuminated part of the earth """
+illuminated part of the earth."""
 
 from sense_hat import SenseHat
 
