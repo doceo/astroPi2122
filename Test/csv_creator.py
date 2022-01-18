@@ -33,6 +33,9 @@ create_csv(data_file)
 '''
 Questo ciclo può essere un calco tramite il quale si può creare la funzione main
 
+from time import sleep
+from datetime import datetime, timedelta
+
 # Record the start and current time
 start_time = datetime.now()
 now_time = datetime.now()
