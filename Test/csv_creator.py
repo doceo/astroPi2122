@@ -39,11 +39,13 @@ now_time = datetime.now()
 
 # Run a loop for three hours
 while (now_time < start_time + timedelta(minutes=180)):
+    # funzione capture
     row = (datetime.now(), location.latitude.signed_dma, location.longitude.signed_dms, location.elevation.km, sense.temperature, sense.humidity)
     'row = (datetime.now(), location.latitude.degrees, location.longitude.degrees, location.elevation.km, sense.temperature, sense.humidity)'
     add_csv_data(data_file, row)
     sleep(30)
-     # Update the current time
+    
+    # Update the current time
      now_time = datetime.now()
      
 '''
