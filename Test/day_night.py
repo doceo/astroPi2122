@@ -8,8 +8,8 @@ from sense_hat import SenseHat
 
 sense = SenseHat()
 sense.color.gain = 16
-light = sense.color.clear
-if light < 64:
-    print('Dark')
+light_quantity = sense.color.clear
+if light_quantity < 64:
+    light = 'Dark'
 else:
-    print('Light')
+    light = 'Light'
