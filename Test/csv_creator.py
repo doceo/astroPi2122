@@ -10,6 +10,18 @@ sense = SenseHat()
 # Compute the coordinates of the Earth location directly beneath the ISS
 location = ISS.coordinates() 
 
+'''
+from orbit import satellite+
+iss = satellite(25544)
+iss_name = iss.name()
+print (iss_name)
+iss_current_latitude = iss.lat()
+iss_current_longitude = iss.long()
+print (iss_current_latitude)
+print (iss_current_longitude)
+
+'''
+
 # Define the function that create the CSV and write the firts row
 def create_csv(data_file):
     with open(data_file, 'w') as f:
