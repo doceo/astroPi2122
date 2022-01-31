@@ -1,15 +1,16 @@
 import csv
 from orbit import ISS
-from pisense import SenseHat
-from datetime import datetime
+
 from pathlib import Path
+from time import sleep
+from datetime import datetime, timedelta
 
 # Set up Sense Hat
-sense = SenseHat()
+#sense = SenseHat()
 
 # Compute the coordinates of the Earth location directly beneath the ISS
 location = ISS.coordinates() 
-
+print(location)
 '''
 from orbit import satellite+
 iss = satellite(25544)
@@ -42,11 +43,9 @@ data_file = base_folder/'data.csv'
 create_csv(data_file)
 
 
-'''
-Questo ciclo può essere un calco tramite il quale si può creare la funzione main
 
-from time import sleep
-from datetime import datetime, timedelta
+#Questo ciclo può essere un calco tramite il quale si può creare la funzione main
+
 
 # Record the start and current time
 start_time = datetime.now()
@@ -62,7 +61,3 @@ while (now_time < start_time + timedelta(minutes=180)):
         sleep(30)
         # Update the current time
         now_time = datetime.now()
-  
-  
-     
-'''

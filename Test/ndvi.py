@@ -4,9 +4,9 @@ import cv2
 import numpy as np
 #The fastie colour map takes dark pixels and makes them white. Then the brighter the original pixels, the further along the spectrum the colours are shifted. So dark grey pixels become blue, while bright white pixels become red.
 from fastiecm import fastiecm
-from picamera import PiCamera
-import picamera.array
-
+#from picamera import PiCamera
+#import picamera.array
+'''
 cam = PiCamera()
 cam.rotation = 180
 # cam.resolution = (1920, 1080) # Uncomment if using a Pi Noir camera
@@ -15,12 +15,12 @@ cam.resolution = (2592, 1952) # Comment this line if using a Pi Noir camera
 stream = picamera.array.PiRGBArray(cam)
 cam.capture(stream, format='bgr', use_video_port=True)
 original = stream.array
-
+'''
 #these lines to your code, to setup and use the Raspberry Pi camera. Comment out the line that loads the park.png image.
 # original = cv2.imread('park.png') #Comment out this line, as no longer used
 
 
-original = cv2.imread('/home/pi/park.png')
+original = cv2.imread('../images/S2A_MSIL1C_20220120T091311_N0301_R050_T34TGK_20220120T111422-ql.jpg')
 
 """
 The next stage is to load an image and display it on the screen.
@@ -80,7 +80,7 @@ plants or no plants), and then divided by the bottom calculation. Because we’r
     return ndvi
 
 
-display(original, 'Original')
+#display(original, 'Original')
 # convert your image and display it on the screen.
 contrasted = contrast_stretch(original)
 display(contrasted, 'Contrasted original')
