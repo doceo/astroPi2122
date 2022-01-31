@@ -1,15 +1,23 @@
-"""The Sense HAT documentation contains sections on how to retrieve data from the environmental sensors (temperature,
-humidity, pressure) and the Inertial Measurement Unit (IMU) (acceleration, orientiation). Additional documentation is
-available for interacting with the light and colour sensor. You can also explore the wide range of Sense HAT projects
-available from the Raspberry Pi Foundation. Through Sense HAT we can detect if the camera is framing a dark or
-illuminated part of the earth."""
+"""TA satellite is generally only visible to a ground observer when there is still sunlight up at its altitude. The
+satellite will visually disappear when it enters the Earth’s shadow and reappear when it comes out of eclipse. If you
+are planning to observe a satellite visually, rather than with radar or radio, you will want to know which satellite
+passes are in sunlight. Knowing a satellite’s sunlit periods is also helpful when modeling satellite power and
+thermal cycles as it goes in and out of eclipse.
 
-from sense_hat import SenseHat
+Skyfield provides a simple geometric estimate for this through the is_sunlit() method. Given an ephemeris with which
+it can compute the Sun’s position, it will return True when the satellite is in sunlight and False otherwise. """
 
-sense = SenseHat()
-sense.color.gain = 16
-light_quantity = sense.color.clear
-if light_quantity < 64:
-    light = 'Dark'
-else:
-    light = 'Light'
+from time import sleep
+from orbit import ISS
+from skyfield.api import load
+
+ephemeris = load('de421.bsp')
+timescale = load.timescale()
+
+while True:
+    t = timescale.now()
+    if ISS.at(t).is_sunlit(ephemeris):
+        sunlight = True
+    else:
+        sunlight = False
+    sleep(30)
