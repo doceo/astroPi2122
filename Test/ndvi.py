@@ -6,16 +6,7 @@ import numpy as np
 from fastiecm import fastiecm
 #from picamera import PiCamera
 #import picamera.array
-'''
-cam = PiCamera()
-cam.rotation = 180
-# cam.resolution = (1920, 1080) # Uncomment if using a Pi Noir camera
-cam.resolution = (2592, 1952) # Comment this line if using a Pi Noir camera
-#Capture a stream and save it as an array.
-stream = picamera.array.PiRGBArray(cam)
-cam.capture(stream, format='bgr', use_video_port=True)
-original = stream.array
-'''
+
 #these lines to your code, to setup and use the Raspberry Pi camera. Comment out the line that loads the park.png image.
 # original = cv2.imread('park.png') #Comment out this line, as no longer used
 
