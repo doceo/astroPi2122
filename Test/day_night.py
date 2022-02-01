@@ -8,11 +8,20 @@ Skyfield provides a simple geometric estimate for this through the is_sunlit() m
 it can compute the Sun’s position, it will return True when the satellite is in sunlight and False otherwise. """
 
 from time import sleep
-from orbit import ISS
+from orbit import ISS  # sei sicuro serva?
 from skyfield.api import load
+
+
 
 ephemeris = load('de421.bsp')
 timescale = load.timescale()
+
+'''
+questo script deve diventare una funzione da richiamare, non un ciclo.
+definisci una funzione dayNight() che restituisce true o false quando richiamata.
+testiamola nel main che ho inserito sotto
+
+'''
 
 while True:
     t = timescale.now()
@@ -21,3 +30,7 @@ while True:
     else:
         sunlight = False
     sleep(30)
+
+
+if __name__ == '__main__':
+    pass
