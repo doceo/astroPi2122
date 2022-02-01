@@ -1,3 +1,5 @@
+# MODULI PERSONALI
+import functions
 
 # MODULI PER CSV
 import csv
@@ -10,6 +12,7 @@ from datetime import datetime, timedelta
 # MODULI PER PICAMERA
 from picamera import PiCamera
 from time import time
+
 
 
 '''
