@@ -6,9 +6,6 @@ from time import sleep
 from datetime import datetime, timedelta
 
 # Initialise the CSV file
-base_folder = Path(__file__).parent.resolve()
-data_file = base_folder/'data.csv'
-
 
 # Compute the coordinates of the Earth location directly beneath the ISS
 location = ISS.coordinates() 
@@ -28,15 +25,19 @@ def add_csv_data(data_file, data):
         writer.writerow(data)
 
 
-
 if __name__ == '__main__':
+
+    # nel main vanno dichiarate questi valori
+
+    base_folder = Path(__file__).parent.resolve()
+    data_file = base_folder/'data.csv'
 
     create_csv(data_file)
 
-    # Record the start and current time
-    start_time = datetime.now()
-    now_time = datetime.now()
 
-    # funzione capture
-    row = (datetime.now(), location.latitude.signed_dma, location.longitude.signed_dms, location.elevation.km)
+
+
+
+    # costruisce la riga
+    row = (datetime.now(), location.latitude, location.longitude, location.elevation.km)
     add_csv_data(data_file, row)
