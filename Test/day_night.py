@@ -7,29 +7,21 @@ thermal cycles as it goes in and out of eclipse.
 Skyfield provides a simple geometric estimate for this through the is_sunlit() method. Given an ephemeris with which
 it can compute the Sun’s position, it will return True when the satellite is in sunlight and False otherwise. """
 
-from time import sleep
-from orbit import ISS  # sei sicuro serva?
+from orbit import ISS
 from skyfield.api import load
 
-
-
+# load ephemeris (high accuracy table with position of celestial objects)
 ephemeris = load('de421.bsp')
 timescale = load.timescale()
 
-'''
-questo script deve diventare una funzione da richiamare, non un ciclo.
-definisci una funzione dayNight() che restituisce true o false quando richiamata.
-testiamola nel main che ho inserito sotto
 
-'''
-
-while True:
+# this function returns true if the satellite is in sunlight and returns false if the satellite is not in sunlight
+def dayNight():
     t = timescale.now()
     if ISS.at(t).is_sunlit(ephemeris):
-        sunlight = True
+        return True
     else:
-        sunlight = False
-    sleep(30)
+        return False
 
 
 if __name__ == '__main__':
