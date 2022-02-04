@@ -60,7 +60,7 @@ if __name__ == '__main__':
     data_file = base_folder/'data.csv'
 
     image_name = str(time())
-    path_image = base_folder + "/" + image_name
+    path_image = str(base_folder) + "/" + image_name
 
   #  capture(path_image)
 
