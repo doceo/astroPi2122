@@ -38,4 +38,15 @@ def add_csv_data(data_file, data):
 
 
 if __name__ == '__main__':
-    print(funcTest())
+    
+
+    base_folder = Path(__file__).parent.resolve()
+    data_file = base_folder/'data.csv'
+
+    create_csv(data_file)
+
+    row = (datetime.now(), location.latitude, location.longitude, location.elevation.km)
+    add_csv_data(data_file, row)
+    print("file creato.\n")
+
+    print("è giorno? ", dayNight())
