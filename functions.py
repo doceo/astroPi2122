@@ -11,7 +11,7 @@ from time import sleep
 from datetime import datetime, timedelta
 
 # moduli utili all'acquisizione immagine
-from picamera import PiCamera
+# from picamera import PiCamera
 from time import time
 
 def capture(imName):
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     image_name = str(time())
     path_image = base_folder + "/" + image_name
 
-    capture(path_image)
+  #  capture(path_image)
 
     create_csv(data_file)
 
