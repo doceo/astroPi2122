@@ -1,18 +1,28 @@
+
+# moduli utili al daynight
 from random import randint
 from orbit import ISS
 from skyfield.api import load
 
+# moduli utili al csv
 import csv
 from pathlib import Path
 from time import sleep
 from datetime import datetime, timedelta
 
+# moduli utili all'acquisizione immagine
+from picamera import PiCamera
+from time import time
 
-ephemeris = load('de421.bsp')
-timescale = load.timescale()
+def capture(imName):
+    
+    name_image = imName +".jpg"
+    camera = PiCamera()
+    camera.resolution = (1296,972)
+    # Camera warm-up time
+    sleep(2)
+    camera.capture(f"{name_image}")
 
-# Compute the coordinates of the Earth location directly beneath the ISS
-location = ISS.coordinates() 
 
 def dayNight():
     t = timescale.now()
@@ -38,14 +48,25 @@ def add_csv_data(data_file, data):
 
 
 if __name__ == '__main__':
-    
+
+
+    ephemeris = load('de421.bsp')
+    timescale = load.timescale()
+
+    # Compute the coordinates of the Earth location directly beneath the ISS
+    location = ISS.coordinates() 
 
     base_folder = Path(__file__).parent.resolve()
     data_file = base_folder/'data.csv'
 
+    image_name = str(time())
+    path_image = base_folder + "/" + image_name
+
+    capture(path_image)
+
     create_csv(data_file)
 
-    row = (datetime.now(), location.latitude, location.longitude, location.elevation.km)
+    row = (image_name, location.latitude, location.longitude, location.elevation.km)
     add_csv_data(data_file, row)
     print("file creato.\n")
 
