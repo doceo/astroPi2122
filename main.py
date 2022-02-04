@@ -24,7 +24,6 @@ location = ISS.coordinates()
 # Initialise the CSV file
 base_folder = Path(__file__).parent.resolve()
 data_file = base_folder/'data.csv'
-create_csv(data_file)
 
 
 def capture(name):
@@ -46,6 +45,7 @@ def create_csv(data_file):
         writer = csv.writer(f)
         header = ("Date/time", "Latitude", "Longitude", "Elevation", "Temperature", "Humidity")
         writer.writerow(header)
+create_csv(data_file)
 
 # Define the function to write the other row with the values
 def add_csv_data(data_file, data):

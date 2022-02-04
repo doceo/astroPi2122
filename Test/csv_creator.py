@@ -5,7 +5,6 @@ from pathlib import Path
 from time import sleep
 from datetime import datetime, timedelta
 
-# Initialise the CSV file
 
 # Compute the coordinates of the Earth location directly beneath the ISS
 location = ISS.coordinates() 
@@ -36,8 +35,3 @@ if __name__ == '__main__':
 
 
 
-
-
-    # costruisce la riga
-    row = (datetime.now(), location.latitude, location.longitude, location.elevation.km)
-    add_csv_data(data_file, row)
