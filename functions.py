@@ -10,9 +10,7 @@ from pathlib import Path
 from time import sleep
 from datetime import datetime, timedelta
 
-# moduli utili all'acquisizione immagine
-# from picamera import PiCamera
-from time import time
+
 
 def capture(imName):
     
@@ -46,9 +44,16 @@ def add_csv_data(data_file, data):
 
 
 
+'''
+QUELLO CHE SEGUE È LA PARTE CHE ANDREBBE INCLUSA IN MAIN.PY
+
+'''
 
 if __name__ == '__main__':
 
+    #### ATTENZIONE, NEL MAIN VA CREATO UNA SOLA VOLTA ALTRIMENTI LO GENERA AD
+    #### OGNI CICLO E LO SOVRASCRIVE SEMPRE
+    #create_csv(data_file)
 
     ephemeris = load('de421.bsp')
     timescale = load.timescale()
@@ -59,12 +64,10 @@ if __name__ == '__main__':
     base_folder = Path(__file__).parent.resolve()
     data_file = base_folder/'data.csv'
 
-    image_name = str(time())
+    image_name = datetime.now().strftime("%Y%m%d-%H%M%S")
     path_image = str(base_folder) + "/" + image_name
 
   #  capture(path_image)
-
-    create_csv(data_file)
 
     row = (image_name, location.latitude, location.longitude, location.elevation.km)
     add_csv_data(data_file, row)
