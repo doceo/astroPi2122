@@ -80,7 +80,7 @@ def contrast(image):
     display(image, 'Original')
     # convert your image and display it on the screen.
     contrasted = contrast_stretch(image)
-    #display(contrasted, 'Contrasted original')
+    display(contrasted, 'Contrasted original')
     # save your high contrast image by adding a single line to the end of your code, so that you can compare the two
     # images in your file browser. It will be called contrasted.png.
     cv2.imwrite('contrasted.png', contrasted)
@@ -90,7 +90,7 @@ def contrast(image):
 
 def contrastNdvi(contrasted):
     ndvi = calc_ndvi(contrasted)
-    #display(ndvi, 'NDVI')
+    display(ndvi, 'NDVI')
     ndvi_contrasted = contrast_stretch(ndvi)
     cv2.imwrite('ndvi_contrasted.png', ndvi_contrasted)
     #display(ndvi_contrasted, 'NDVI contrasted')
@@ -115,5 +115,5 @@ def colorMapping(ndvi_contrasted):
 
 if __name__ == '__main__':
     original = cv2.imread('images/image-test.jpg')
-
+    print(calc_ndvi(original))
     
