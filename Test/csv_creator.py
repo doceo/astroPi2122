@@ -20,7 +20,6 @@ def create_csv(data_file):
 def add_csv_data(data_file, data):
     with open(data_file, 'a') as f:
         writer = csv.writer(f)
-        row = (data, location.latitude.signed_dms, location.longitude.signed_dms, location.elevation.km)
         writer.writerow(data)
 
 '''
@@ -32,8 +31,9 @@ base_folder = Path(__file__).parent.resolve()
 data_file = base_folder/'data.csv'
 
 name_file = datetime.now()
+row = (name_file, location.latitude.signed_dms, location.longitude.signed_dms, location.elevation.km)
 create_csv(data_file)
-add_csv_data(data_file, name_file)
+add_csv_data(data_file, row)
 
 
 
