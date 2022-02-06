@@ -9,6 +9,7 @@ from pathlib import Path
 from time import sleep
 from datetime import datetime, timedelta
 
+from picamera import PiCamera
 
 def capture(imName):
     name_image = imName + ".jpg"
