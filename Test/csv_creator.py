@@ -35,6 +35,6 @@ row = (name_file, location.latitude.signed_dms, location.longitude.signed_dms, l
 create_csv(data_file)
 add_csv_data(data_file, row)
 print(row)
-
+print(True)
 
 
