@@ -8,7 +8,6 @@ from datetime import datetime, timedelta
 
 # Compute the coordinates of the Earth location directly beneath the ISS
 location = ISS.coordinates() 
-print(location)
 
 # Define the function that create the CSV and write the firts row
 def create_csv(data_file):
