@@ -32,10 +32,9 @@ data_file = base_folder/'data.csv'
 
 name_file = datetime.now()
 row = (name_file, location.latitude.signed_dms, location.longitude.signed_dms, location.elevation.km)
-if() :
-    create_csv(data_file)
-    add_csv_data(data_file, row)
-    print('True')
+create_csv(data_file)
+add_csv_data(data_file, row)
+print(True)
 
 
 
