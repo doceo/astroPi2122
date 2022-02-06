@@ -1,6 +1,7 @@
 # il seguente link spiega il codice
 # https://projects.raspberrypi.org/en/projects/astropi-ndvi
 import cv2
+from PIL import Image
 import numpy as np
 # The fastie colour map takes dark pixels and makes them white. Then the brighter the original pixels, the further
 # along the spectrum the colours are shifted. So dark grey pixels become blue, while bright white pixels become red.
@@ -8,39 +9,72 @@ from fastiecm import fastiecm
 
 # from picamera import PiCamera
 # import picamera.array
+from pathlib import Path
+
 
 # these lines to your code, to setup and use the Raspberry Pi camera. Comment out the line that loads the park.png
 # image. original = cv2.imread('park.png') #Comment out this line, as no longer used
 
 
+# le funzioni che seguono servono ad annulare i possibili errori di valutaizone
+# di ndvi sull'immagine originale.
 
 
-"""
-The next stage is to load an image and display it on the screen.
+def loadImage(filename):
+    print(f'try to load image {filename}')
+    img = Image.open(filename).copy()
+    print(f'{filename} loaded and copied\n')
+    return img
 
-cv2.imread is used to load an image
-np.array(original, dtype=float)/float(255) is used to convert the image to an array with the correct type
-cv2.namedWindow is used to create a display window
-cv2.imshow is used to show an image in a window
-cv2.waitKey stops the window from vanishing, until a key is pressed
-cv2.destroyAllWindows() closes the window when the key has been pressed
+def saveImage(filename, img):
+    print(f'saving {filename}')
+    img.save(filename)
+    print(f'{filename} saved. bye\n\n')
 
-get the width and height of the image you are using, and then scale the values down. 
-shape = original.shape
-height = int(shape[0]/2)
-width = int(shape[1]/2)
+def getImageSize(img):
+    print('reading image size')
+    size = img.size
+    print(f'image size is {size}\n')
+    return size
 
-"""
+def calculateHowManyRect(imgSize, lx, ly):
+    nx = imgSize[0] // lx
+    ny = imgSize[1] // ly
+    n = imgSize[0]*imgSize[1] // (lx*ly)
+    return (n, nx, ny)
+
+def haveRect(x, y, lx, ly, imgSize):
+    return (x+lx <= imgSize[0] and y+ly <= imgSize[1])
+
+def processRect(x, y, lx, ly, img, imgSize):
+    rectValue = 0
+    for xx in range(x, x+lx):
+        for yy in range(y, y+ly):
+            pixelData = img.getpixel((xx,yy))
+            rectValue += sum(pixelData)
+
+    if rectValue/(lx*ly*3) < 30:
+        # print(f'hey {rectValue/(lx*ly*3)}')
+        for xx in range(x, x + lx):
+            for yy in range(y, y + ly):
+                img.putpixel((xx, yy), (0,0,0))
+
+    x += lx
+    if x >= imgSize[0]:
+        x = 0
+        y += ly
+    return (x, y)
 
 
 def display(image, image_name):
     image = np.array(image, dtype=float) / float(255)
     shape = image.shape
-    height = int(shape[0] / 2)
-    width = int(shape[1] / 2)
+    height = int(shape[0] / 3)
+    width = int(shape[1] / 3)
     image = cv2.resize(image, (width, height))
     cv2.namedWindow(image_name)
-    cv2.imshow(image_name, image)
+
+    cv2.imshow(image_name, imageCircle)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
@@ -76,23 +110,29 @@ def calc_ndvi(image):
     return ndvi
 
 
-def contrast(image):
-    display(image, 'Original')
+def contrast(image, name):
+#    display(image, 'Original')
     # convert your image and display it on the screen.
     contrasted = contrast_stretch(image)
-    display(contrasted, 'Contrasted original')
+    #display(contrasted, 'Contrasted original')
     # save your high contrast image by adding a single line to the end of your code, so that you can compare the two
     # images in your file browser. It will be called contrasted.png.
-    cv2.imwrite('contrasted.png', contrasted)
+    name_contrast = name[:-4] +'-contrast.jpg'
+
+    cv2.imwrite(name_contrast, contrasted)
     # pass in the contrasted image, display it, and save it.
     return contrasted
 
 
-def contrastNdvi(contrasted):
+def contrastNdvi(contrasted, name):
     ndvi = calc_ndvi(contrasted)
-    display(ndvi, 'NDVI')
+    #display(ndvi, 'NDVI')
     ndvi_contrasted = contrast_stretch(ndvi)
-    cv2.imwrite('ndvi_contrasted.png', ndvi_contrasted)
+
+    name_contrastNdvi = name[:-4] +'-contrastNdvi.jpg'
+
+    cv2.imwrite(name_contrastNdvi, ndvi_contrasted)
+
     #display(ndvi_contrasted, 'NDVI contrasted')
     return ndvi_contrasted
 
@@ -103,17 +143,57 @@ Now you can see healthy plant life by the brightness of the pixels in the ndvi_c
 """
 
 
-def colorMapping(ndvi_contrasted):
+def colorMapping(ndvi_contrasted, name):
     # Now the image can be converted using cv2 colour mapping, and written out as a new file
     color_mapped_prep = ndvi_contrasted.astype(np.uint8)
     # convert the image using the fastie colour map, display it, and write a new file.
     color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
-    display(color_mapped_image, 'Color mapped')
-    cv2.imwrite('color_mapped_image.png', color_mapped_image)
+    #display(color_mapped_image, 'Color mapped')
+
+    name_color_mapped = name[:-4] +'-color_mapped.jpg'
+
+    cv2.imwrite(name_color_mapped, color_mapped_image)
     return color_mapped_image
 
 
 if __name__ == '__main__':
-    original = cv2.imread('images/image-test.jpg')
-    print(calc_ndvi(original))
     
+    base_folder = Path(__file__).parent.resolve()
+
+    image_name = '/images/image-test'
+    image_original = str(base_folder) + image_name +'.jpg'
+
+    img_master = loadImage(image_original)
+    imgSize = getImageSize(img_master)
+
+    #lx, ly = 78, 190
+    lx, ly = 6, 5
+    print(f'Setting rect size to {(lx, ly)}\n')
+
+    n, nx, ny = calculateHowManyRect(imgSize, lx, ly)
+    print(f'Number of rectangles {n}. nx = {nx}, ny = {ny}\n')
+
+    x, y = 0, 0
+    while haveRect(x, y, lx, ly, imgSize):
+        # print(f'processing rect {(x, y, lx, ly)}')
+        x, y = processRect(x, y, lx, ly, img_master, imgSize)
+
+    name_image_clear = str(base_folder) + image_name + '-clear.jpg' 
+
+    saveImage(name_image_clear, img_master)
+
+    img_master = cv2.imread(image_original)
+    img_clear = cv2.imread(name_image_clear)
+    
+    print("processo l'immagine originale\n")
+    contrasted = contrast(img_master, image_original)
+    ndvi_contrasted = contrastNdvi(contrasted, image_original)
+    color_mapped_image = colorMapping(ndvi_contrasted, image_original)
+    print("fatto.\n\n")
+
+
+    print("processo l'immagine modificata\n\n")
+    contrasted = contrast(img_clear, name_image_clear)
+    ndvi_contrasted = contrastNdvi(contrasted, name_image_clear)
+    color_mapped_image = colorMapping(ndvi_contrasted, name_image_clear)
+    print("fatto.\n\n")
