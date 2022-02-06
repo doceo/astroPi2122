@@ -31,8 +31,9 @@ if __name__ == '__main__':
 base_folder = Path(__file__).parent.resolve()
 data_file = base_folder/'data.csv'
 
+name_file = datetime.now()
 create_csv(data_file)
-add_csv_data(data_file)
+add_csv_data(data_file, name_file)
 
 
 
