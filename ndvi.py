@@ -147,15 +147,9 @@ def colorMapping(ndvi_contrasted):
 
     return color_mapped_image
 
+def image_clean(img):
 
-if __name__ == '__main__':
-    
-    base_folder = Path(__file__).parent.resolve()
-
-    image_name = '/images/image-test'
-    image_original = str(base_folder) + image_name +'.jpg'
-
-    img_master = loadImage(image_original)
+    img_master = loadImage(img)
     imgSize = getImageSize(img_master)
 
     #lx, ly = 78, 190
@@ -171,52 +165,30 @@ if __name__ == '__main__':
         x, y = processRect(x, y, lx, ly, img_master, imgSize)
 
     name_image_clear = str(base_folder) + image_name + '-clear.jpg' 
-
+    print(name_image_clear)
     saveImage(name_image_clear, img_master)
-
-    img_master = cv2.imread(image_original)
-    img_clear = cv2.imread(name_image_clear)
+    print("salvato il file pulito")
     
-    print("processo l'immagine originale\n")
-    contrasted = contrast_stretch(img_master)
 
-    image_contrasted = image_original[:-4] + "-contrasted.jpg"   
+def ndviConversion(image):
+
+    img = cv2.imread(image)
+    contrasted = contrast_stretch(img)
+
+    image_contrasted = image[:-4] + "-contrasted.jpg"   
     cv2.imwrite(image_contrasted, contrasted)
+    print(image_contrasted)
+
 
     ndvi = calc_ndvi(contrasted)
     ndvi_contrasted = contrast_stretch(ndvi)
     
     image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
     cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
+    print(image_contr_ndvi)
 
     color_mapped_prep = ndvi_contrasted.astype(np.uint8)
     color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
-
-    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
-    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
-
-    image_color_map = image_contr_ndvi[:-4] + "-color_map.jpg"
-    cv2.imwrite(image_color_map, color_mapped_image)
-
-    print("fatto.\n\n")
-
-    print("processo l'immagine modificata\n")
-    contrasted = contrast_stretch(img_clear)
-
-    image_contrasted = name_image_clear[:-4] + "-contrasted.jpg"   
-    cv2.imwrite(image_contrasted, contrasted)
-
-    ndvi = calc_ndvi(contrasted)
-    ndvi_contrasted = contrast_stretch(ndvi)
-    
-    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
-    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
-
-    color_mapped_prep = ndvi_contrasted.astype(np.uint8)
-    color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
-
-    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
-    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
 
     image_color_map = image_contr_ndvi[:-4] + "-color_map.jpg"
     cv2.imwrite(image_color_map, color_mapped_image)
@@ -224,10 +196,15 @@ if __name__ == '__main__':
     print("fatto.\n\n")
 
 
-'''
-    print("processo l'immagine modificata\n\n")
-    contrasted = contrast(img_clear, name_image_clear)
-    ndvi_contrasted = contrastNdvi(contrasted, name_image_clear)
-    color_mapped_image = colorMapping(ndvi_contrasted, name_image_clear)
-    print("fatto.\n\n")
-'''
+if __name__ == '__main__':
+    
+    base_folder = Path(__file__).parent.resolve()
+
+    image_name = '/images/image-test'
+    image_original = str(base_folder) + image_name +'.jpg'
+    print(image_original)
+    print(image_name)
+    image_clean(image_original)
+
+    ndviConversion(image_original)
+    #ndviConversion(name_image_clear)
