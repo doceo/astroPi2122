@@ -110,28 +110,23 @@ def calc_ndvi(image):
     return ndvi
 
 
-def contrast(image, name):
+def contrast(image):
 #    display(image, 'Original')
     # convert your image and display it on the screen.
     contrasted = contrast_stretch(image)
     #display(contrasted, 'Contrasted original')
     # save your high contrast image by adding a single line to the end of your code, so that you can compare the two
     # images in your file browser. It will be called contrasted.png.
-    name_contrast = name[:-4] +'-contrast.jpg'
 
-    cv2.imwrite(name_contrast, contrasted)
     # pass in the contrasted image, display it, and save it.
     return contrasted
 
 
-def contrastNdvi(contrasted, name):
+def contrastNdvi(contrasted):
     ndvi = calc_ndvi(contrasted)
     #display(ndvi, 'NDVI')
     ndvi_contrasted = contrast_stretch(ndvi)
 
-    name_contrastNdvi = name[:-4] +'-contrastNdvi.jpg'
-
-    cv2.imwrite(name_contrastNdvi, ndvi_contrasted)
 
     #display(ndvi_contrasted, 'NDVI contrasted')
     return ndvi_contrasted
@@ -143,16 +138,13 @@ Now you can see healthy plant life by the brightness of the pixels in the ndvi_c
 """
 
 
-def colorMapping(ndvi_contrasted, name):
+def colorMapping(ndvi_contrasted):
     # Now the image can be converted using cv2 colour mapping, and written out as a new file
     color_mapped_prep = ndvi_contrasted.astype(np.uint8)
     # convert the image using the fastie colour map, display it, and write a new file.
     color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
     #display(color_mapped_image, 'Color mapped')
 
-    name_color_mapped = name[:-4] +'-color_mapped.jpg'
-
-    cv2.imwrite(name_color_mapped, color_mapped_image)
     return color_mapped_image
 
 
@@ -186,14 +178,56 @@ if __name__ == '__main__':
     img_clear = cv2.imread(name_image_clear)
     
     print("processo l'immagine originale\n")
-    contrasted = contrast(img_master, image_original)
-    ndvi_contrasted = contrastNdvi(contrasted, image_original)
-    color_mapped_image = colorMapping(ndvi_contrasted, image_original)
+    contrasted = contrast_stretch(img_master)
+
+    image_contrasted = image_original[:-4] + "-contrasted.jpg"   
+    cv2.imwrite(image_contrasted, contrasted)
+
+    ndvi = calc_ndvi(contrasted)
+    ndvi_contrasted = contrast_stretch(ndvi)
+    
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
+    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
+
+    color_mapped_prep = ndvi_contrasted.astype(np.uint8)
+    color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
+
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
+    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
+
+    image_color_map = image_contr_ndvi[:-4] + "-color_map.jpg"
+    cv2.imwrite(image_color_map, color_mapped_image)
+
+    print("fatto.\n\n")
+
+    print("processo l'immagine modificata\n")
+    contrasted = contrast_stretch(img_clear)
+
+    image_contrasted = name_image_clear[:-4] + "-contrasted.jpg"   
+    cv2.imwrite(image_contrasted, contrasted)
+
+    ndvi = calc_ndvi(contrasted)
+    ndvi_contrasted = contrast_stretch(ndvi)
+    
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
+    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
+
+    color_mapped_prep = ndvi_contrasted.astype(np.uint8)
+    color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
+
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
+    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
+
+    image_color_map = image_contr_ndvi[:-4] + "-color_map.jpg"
+    cv2.imwrite(image_color_map, color_mapped_image)
+
     print("fatto.\n\n")
 
 
+'''
     print("processo l'immagine modificata\n\n")
     contrasted = contrast(img_clear, name_image_clear)
     ndvi_contrasted = contrastNdvi(contrasted, name_image_clear)
     color_mapped_image = colorMapping(ndvi_contrasted, name_image_clear)
     print("fatto.\n\n")
+'''
