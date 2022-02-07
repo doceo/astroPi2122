@@ -168,6 +168,7 @@ def image_clean(img):
     print(name_image_clear)
     saveImage(name_image_clear, img_master)
     print("salvato il file pulito")
+    return name_image_clear
     
 
 def ndviConversion(image):
@@ -204,7 +205,7 @@ if __name__ == '__main__':
     image_original = str(base_folder) + image_name +'.jpg'
     print(image_original)
     print(image_name)
-    image_clean(image_original)
+    name_clean = image_clean(image_original)
 
     ndviConversion(image_original)
-    #ndviConversion(name_image_clear)
+    ndviConversion(name_clean)
