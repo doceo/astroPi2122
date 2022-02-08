@@ -11,13 +11,14 @@ from datetime import datetime, timedelta
 
 from picamera import PiCamera
 
-def capture(imName):
-    name_image = imName + ".jpg"
-    camera = PiCamera()
-    camera.resolution = (1296, 972)
-    # Camera warm-up time
-    sleep(2)
-    camera.capture(f"{name_image}")
+def capture(imName, test):
+    if test:
+        name_image = imName + ".jpg"
+        camera = PiCamera()
+        camera.resolution = (1296, 972)
+        # Camera warm-up time
+        sleep(2)
+        camera.capture(f"{name_image}")
 
 
 def dayNight():
@@ -67,7 +68,7 @@ if __name__ == '__main__':
 
     #  capture(path_image)
 
-    row = (image_name, location.latitude, location.longitude, location.elevation.km)
+    row = (image_name, location.latitude.deg, location.longitude.deg, location.elevation.km)
     add_csv_data(data_file, row)
     print("file creato.\n")
 
