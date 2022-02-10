@@ -18,13 +18,7 @@ from time import time
 '''
 descrizioni variabili globali
 '''
-ephemeris = load('de421.bsp')
-timescale = load.timescale()
 
-image_name = datetime.now().strftime("%Y%m%d-%H%M%S")
-path_image = str(base_folder) + "/" + image_name
-
-light = functions.dayNight()
 
 # Initialise the CSV file
 base_folder = Path(__file__).parent.resolve()
@@ -36,18 +30,23 @@ if __name__ == '__main__':
 
     # Run a loop for three hours
     while (now_time < start_time + timedelta(minutes=2)):
-       
+        
+        # Variables for the dayNight function
+        ephemeris = load('de421.bsp')
+        timescale = load.timescale()
+        light = dayNight()
         if light == True:
-        
-            location = ISS.coordinates() # da verificare
-        
-            capture(name_file, 0)
+            location = ISS.coordinates()
             
-            name_file = datetime.now()
             
-            if capture(name_file, 0):
+            image_name = datetime.now().strftime("%Y%m%d-%H%M%S")
+            path_image = str(base_folder) + "/" + image_name
             
-                row = (name_file, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
+            capture(image_name, 0)                
+            
+            if capture(image_name, 0):
+            
+                row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
             
                 add_csv_data(data_file, row)
         
