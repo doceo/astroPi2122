@@ -45,9 +45,9 @@ if __name__ == '__main__':
             image_name = datetime.now().strftime("%Y%m%d-%H%M%S")
             path_image = str(base_folder) + "/" + image_name
             
-            capture(image_name, 0)                
+            capture(path_image, 0)                
             
-            if capture(image_name, 0):
+            if capture(image_name):
             
                 row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
             
