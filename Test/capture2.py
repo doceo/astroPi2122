@@ -7,4 +7,4 @@ cam = PiCamera
 cam.resolution = (1296, 972)
 counter = 1
 image_file = f"{base_folder}/photo_{counter:03d}.jpg"
-capture(cam)
+capture(cam, image_file)
