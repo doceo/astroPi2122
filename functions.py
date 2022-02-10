@@ -21,8 +21,8 @@ def capture(imName, test):
         camera.capture(f"{name_image}")
 
 
-def dayNight():
-    t = timescale.now()
+def dayNight(t):
+    ephemeris = load('de421.bsp')
     if ISS.at(t).is_sunlit(ephemeris):
         return True
     else:

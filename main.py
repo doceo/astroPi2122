@@ -36,7 +36,7 @@ if __name__ == '__main__':
         # Variables for the dayNight function
         ephemeris = load('de421.bsp')
         timescale = load.timescale()
-        light = dayNight()
+        light = dayNight(timescale)
        
         if light == True:
             
