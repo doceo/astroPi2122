@@ -14,7 +14,7 @@ def capture():
     camera.resolution = (1296,972)
     # Camera warm-up time
     sleep(2)
-    camera.capture(f"{path_image}")
+    camera.capture(f"{image_name}")
 
 capture()
 
