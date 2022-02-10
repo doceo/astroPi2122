@@ -29,9 +29,10 @@ if __name__ == '__main__':
 base_folder = Path(__file__).parent.resolve()
 data_file = base_folder/'data.csv'
 
-date_time = datetime.now()
-name_file = date_time
+
+name_file = 1
 row = (name_file, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
 print(row)
+print(datetime)
 
 
