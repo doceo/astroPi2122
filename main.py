@@ -18,7 +18,8 @@ from time import time
 '''
 descrizioni variabili globali
 '''
-
+# Compute the coordinates of
+location = ISS.coordinates()
 
 # Initialise the CSV file
 base_folder = Path(__file__).parent.resolve()
@@ -37,8 +38,8 @@ if __name__ == '__main__':
         name_file = datetime.now()
         if capture(name_file, 0):
             # salva fotografia
-            # genera riga
-            add_csv_data(data_file, name_file)
+            row = (name_file, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
+            add_csv_data(data_file, row)
         
     
         # Update the current time
