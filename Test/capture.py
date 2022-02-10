@@ -11,7 +11,7 @@ def capture(imName):
     camera.resolution = (1296, 972)
     # Camera warm-up time
     sleep(2)
-    camera.capture(f"{name_image}")
+    #camera.capture(f"{name_image}")
 
 image_name = datetime.now().strftime("%Y%m%d-%H%M%S")
 path_image = str(base_folder) + "/" + image_name
