@@ -16,3 +16,4 @@ def capture(imName):
 image_name = datetime.now().strftime("%Y%m%d-%H%M%S")
 path_image = str(base_folder) + "/" + image_name
 capture(path_image)
+print(True)
