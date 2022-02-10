@@ -37,10 +37,8 @@ if __name__ == '__main__':
         # CAPTURE AND SAVE
         name_file = datetime.now()
         if capture(name_file, 0):
-            # salva fotografia
             row = (name_file, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
             add_csv_data(data_file, row)
         
-    
         # Update the current time
         now_time = datetime.now()
