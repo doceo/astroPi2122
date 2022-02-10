@@ -34,8 +34,8 @@ if __name__ == '__main__':
     while (now_time < start_time + timedelta(minutes=1)):
         
         # Variables for the dayNight function
-        ephemeris = load('de421.bsp')
-        timescale = load.timescale()
+        timescale = timescale.now()
+     
         light = dayNight(timescale)
        
         if light == True:
