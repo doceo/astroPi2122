@@ -35,9 +35,11 @@ if __name__ == '__main__':
         ephemeris = load('de421.bsp')
         timescale = load.timescale()
         light = dayNight()
+       
         if light == True:
-            location = ISS.coordinates()
             
+            # Compute the coordinates of the Earth location directly beneath the ISS
+            location = ISS.coordinates()
             
             image_name = datetime.now().strftime("%Y%m%d-%H%M%S")
             path_image = str(base_folder) + "/" + image_name
