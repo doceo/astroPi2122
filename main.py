@@ -34,9 +34,8 @@ if __name__ == '__main__':
     while (now_time < start_time + timedelta(minutes=1)):
         
         # Variables for the dayNight function
-        timescale = timescale.now()
      
-        light = dayNight(timescale)
+        light = dayNight()
        
         if light == True:
             

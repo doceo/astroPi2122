@@ -22,8 +22,9 @@ def capture(imName, test):
 
 
 def dayNight(t):
+    timescale = timescale.now()
     ephemeris = load('de421.bsp')
-    if ISS.at(t).is_sunlit(ephemeris):
+    if ISS.at(timescale).is_sunlit(ephemeris):
         return True
     else:
         return False
