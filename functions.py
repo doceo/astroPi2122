@@ -20,6 +20,8 @@ def capture(imName, test):
         # Camera warm-up time
         sleep(2)
         camera.capture(f"{name_image}")
+        return True
+    return False
 
 
 def dayNight():
