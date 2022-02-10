@@ -30,9 +30,7 @@ base_folder = Path(__file__).parent.resolve()
 data_file = base_folder/'data.csv'
 
 
-name_file = 1
-row = (name_file, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
+row = (datetime.now(), location.latitude.degrees, location.longitude.degrees, location.elevation.km)
 print(row)
-print(datetime.now())
 
 
