@@ -10,6 +10,7 @@ from time import sleep
 from datetime import datetime, timedelta
 
 from picamera import PiCamera
+from time import time
 
 def capture(imName, test):
     if test:
@@ -21,8 +22,8 @@ def capture(imName, test):
         camera.capture(f"{name_image}")
 
 
-def dayNight(t):
-    timescale = timescale.now()
+def dayNight():
+    timescale = load.timescale().now()
     ephemeris = load('de421.bsp')
     if ISS.at(timescale).is_sunlit(ephemeris):
         return True

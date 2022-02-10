@@ -3,35 +3,26 @@ from functions import *
 
 # MODULI PER CSV
 import csv
-from orbit import ISS
 
 from pathlib import Path
 from time import sleep
-from datetime import datetime, timedelta
-
-# MODULI PER PICAMERA
-from picamera import PiCamera
-from time import time
-
-
 
 '''
 descrizioni variabili globali
 '''
 
-start_time = datetime.now()
-now_time = datetime.now()
-
-# Initialise the CSV file
-base_folder = Path(__file__).parent.resolve()
-data_file = base_folder/'data.csv'
-
-
 if __name__ == '__main__':
     print('main.py - AstroPI 2021/2022')
 
+    start_time = datetime.now()
+    now_time = datetime.now()
+
+    # Initialise the CSV file
+    base_folder = Path(__file__).parent.resolve()
+    data_file = base_folder/'data.csv'
+
     # Run a loop for three hours
-    while (now_time < start_time + timedelta(minutes=1)):
+    while (now_time < start_time + timedelta(minutes=3)):
         
         # Variables for the dayNight function
      
