@@ -18,8 +18,6 @@ from time import time
 '''
 descrizioni variabili globali
 '''
-# Compute the coordinates of
-location = ISS.coordinates()
 
 # Initialise the CSV file
 base_folder = Path(__file__).parent.resolve()
@@ -31,6 +29,8 @@ if __name__ == '__main__':
 
     # Run a loop for three hours
     while (now_time < start_time + timedelta(minutes=2)):
+        
+        # giorno o notte
         
         location = ISS.coordinates() # da verificare
         
