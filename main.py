@@ -19,6 +19,8 @@ from time import time
 descrizioni variabili globali
 '''
 ephemeris = load('de421.bsp')
+timescale = load.timescale()
+
 
 light = functions.dayNight()
 
