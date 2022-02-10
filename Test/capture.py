@@ -3,14 +3,13 @@ from time import sleep
 from datetime import datetime, timedelta
 from pathlib import Path
 
-def capture(imName, test):
-    if test:
-        name_image = imName + ".jpg"
-        camera = PiCamera()
-        camera.resolution = (1296, 972)
-        # Camera warm-up time
-        sleep(2)
-        camera.capture(f"{name_image}")
+def capture(imName):
+    name_image = imName + ".jpg"
+    camera = PiCamera()
+    camera.resolution = (1296, 972)
+    # Camera warm-up time
+    sleep(2)
+    camera.capture(f"{name_image}")
 
 
 base_folder = Path(__file__).parent.resolve()
