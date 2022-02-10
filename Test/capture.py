@@ -3,6 +3,8 @@ from time import sleep
 from datetime import datetime, timedelta
 from pathlib import Path
 
+base_folder = Path(__file__).parent.resolve()
+
 def capture(imName):
     name_image = imName + ".jpg"
     camera = PiCamera()
@@ -11,8 +13,6 @@ def capture(imName):
     sleep(2)
     camera.capture(f"{name_image}")
 
-
-base_folder = Path(__file__).parent.resolve()
 image_name = datetime.now().strftime("%Y%m%d-%H%M%S")
 path_image = str(base_folder) + "/" + image_name
 capture(path_image)
