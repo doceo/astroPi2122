@@ -20,6 +20,7 @@ descrizioni variabili globali
 '''
 
 start_time = datetime.now()
+now_time = datetime.now()
 
 # Initialise the CSV file
 base_folder = Path(__file__).parent.resolve()
@@ -30,7 +31,7 @@ if __name__ == '__main__':
     print('main.py - AstroPI 2021/2022')
 
     # Run a loop for three hours
-    while (now_time < start_time + timedelta(minutes=180)):
+    while (now_time < start_time + timedelta(minutes=1)):
         
         # Variables for the dayNight function
         ephemeris = load('de421.bsp')
