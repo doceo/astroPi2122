@@ -53,7 +53,7 @@ def processRect(x, y, lx, ly, img, imgSize):
             pixelData = img.getpixel((xx,yy))
             rectValue += sum(pixelData)
 
-    if rectValue/(lx*ly*3) < 30:
+    if rectValue/(lx*ly*3) < 15:
         # print(f'hey {rectValue/(lx*ly*3)}')
         for xx in range(x, x + lx):
             for yy in range(y, y + ly):
