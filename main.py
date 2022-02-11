@@ -43,14 +43,13 @@ if __name__ == '__main__':
             location = ISS.coordinates()
             print(location)
 
-
             if capture(image_name, 1):
-            
-                row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
-                print(row)
-                add_csv_data(data_file, row)
+                print("save")
+#                row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
+#                print(row)
+#                add_csv_data(data_file, row)
         
         # Update the current time
         now_time = datetime.now()
         print(now_time)
-        sleep(10)
+        sleep(23) # si deve scattare una foo ogni 23 secondi per avere circa 500 fotografie
