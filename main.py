@@ -14,14 +14,15 @@ descrizioni variabili globali
 if __name__ == '__main__':
     print('main.py - AstroPI 2021/2022')
 
-    start_time = datetime.now()
-    now_time = datetime.now()
-
     # Initialise the CSV file
     base_folder = Path(__file__).parent.resolve()
     data_file = base_folder/'data.csv'
 
     create_csv(data_file)
+
+    start_time = datetime.now()
+    now_time = datetime.now()
+
 
     # Run a loop for three hours
     while (now_time < start_time + timedelta(minutes=3)):
@@ -33,14 +34,15 @@ if __name__ == '__main__':
 
         if light == True:
             
-            # Compute the coordinates of the Earth location directly beneath the ISS
-            location = ISS.coordinates()
-            print(location)
-
             image_name = str(datetime.now().strftime("%Y%m%d-%H%M%S"))
             path_image = str(base_folder) + "/" + image_name             
             
             print(image_name)
+
+            # Compute the coordinates of the Earth location directly beneath the ISS
+            location = ISS.coordinates()
+            print(location)
+
 
             if capture(image_name, 1):
             
