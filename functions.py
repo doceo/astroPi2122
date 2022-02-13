@@ -19,6 +19,7 @@ def capture(imName, test, dFile):
         camera.resolution = (1296, 972)
         # Camera warm-up time
         sleep(2)
+        camera.close()
 
         location = ISS.coordinates()
         print(location)
