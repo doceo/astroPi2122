@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
     image_name = datetime.now().strftime("%Y%m%d-%H%M%S")
     path_image = str(base_folder) + "/" + image_name
-    capture(image_name, 1, data_file)
+    capture(image_name, data_file, 1)
     #  capture(path_image)
 
     #row = (image_name, location.latitude.deg, location.longitude.deg, location.elevation.km)
