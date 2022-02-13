@@ -44,8 +44,7 @@ if __name__ == '__main__':
             location = ISS.coordinates()
             print(location)
 
-            if capture(image_name, 1, dFile):
-                dFile = data_file
+            if capture(image_name, 1, data_file):
                 print("save")
                 #row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
                 #print(row)
