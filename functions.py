@@ -23,7 +23,7 @@ def capture(imName, test, dFile):
         location = ISS.coordinates()
         print(location)
 
-        row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
+        row = (imName, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
         add_csv_data(dFile, row)
         camera.capture(f"{name_image}")
         return True
