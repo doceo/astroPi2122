@@ -58,7 +58,7 @@ def add_csv_data(data_file, data):
 QUELLO CHE SEGUE È LA PARTE CHE ANDREBBE INCLUSA IN MAIN.PY
 
 '''
-
+"""""
 if __name__ == '__main__':
     #### ATTENZIONE, NEL MAIN VA CREATO UNA SOLA VOLTA ALTRIMENTI LO GENERA AD
     #### OGNI CICLO E LO SOVRASCRIVE SEMPRE
