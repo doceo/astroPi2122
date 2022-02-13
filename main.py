@@ -29,9 +29,9 @@ if __name__ == '__main__':
         
         # Variables for the dayNight function
      
-        light = dayNight()
-        print(light)
+        #light = dayNight()
         light = True
+        print(light)
 
         if light == True:
             
