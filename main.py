@@ -37,7 +37,7 @@ if __name__ == '__main__':
         if light == True:
             
             image_name = str(datetime.now().strftime("%Y%m%d-%H%M%S"))
-            path_image = str(base_folder) + '/' + image_name             
+            path_image = str(base_folder) + '/image/' + image_name             
             
             print(image_name)
 
@@ -45,7 +45,7 @@ if __name__ == '__main__':
             location = ISS.coordinates()
             print(location)
 
-            if capture(image_name, 1, data_file):
+            if capture(path_image, 1, data_file):
                 print("save")
                 row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
                 print(row)
