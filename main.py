@@ -47,9 +47,9 @@ if __name__ == '__main__':
 
             if capture(image_name, 1, data_file):
                 print("save")
-                #row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
-                #print(row)
-                #add_csv_data(data_file, row)
+                row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
+                print(row)
+                add_csv_data(data_file, row)
         
         # Update the current time
         now_time = datetime.now()
