@@ -53,4 +53,4 @@ if __name__ == '__main__':
         # Update the current time
         now_time = datetime.now()
         print(now_time)
-        sleep(23) # si deve scattare una foo ogni 23 secondi per avere circa 500 fotografie
+        sleep(23) # si deve scattare una foto ogni 23 secondi per avere circa 500 fotografie
