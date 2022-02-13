@@ -17,8 +17,6 @@ def capture(imName, test, dFile):
         name_image = imName + ".jpg"
         camera = PiCamera()
         camera.resolution = (1296, 972)
-        # Camera warm-up time
-        #sleep(2)
 
         location = ISS.coordinates()
         print(location)
@@ -26,8 +24,13 @@ def capture(imName, test, dFile):
         row = (imName, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
         add_csv_data(dFile, row)
         camera.capture(f"{name_image}")
+        
+        #Camera closed
         camera.close()
+        
+        #Camera warm-up time
         sleep(2)
+        
         return True
     return False
 
