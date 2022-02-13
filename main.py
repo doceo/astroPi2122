@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     # Initialise the CSV file
     base_folder = Path(__file__).parent.resolve()
-    data_file = base_folder/'data.csv'
+    data_file = base_folder + '/data.csv'
 
     create_csv(data_file)
 
