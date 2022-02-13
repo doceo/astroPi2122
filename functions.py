@@ -26,6 +26,7 @@ def capture(imName, test, dFile):
         row = (imName, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
         add_csv_data(dFile, row)
         camera.capture(f"{name_image}")
+        camera.close()
         return True
     return False
 
