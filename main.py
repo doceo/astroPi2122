@@ -43,11 +43,11 @@ if __name__ == '__main__':
             location = ISS.coordinates()
             print(location)
 
-            if capture(image_name, 1):
+            if capture(image_name, 1, csv):
                 print("save")
-#                row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
-#                print(row)
-#                add_csv_data(data_file, row)
+                row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
+                print(row)
+                add_csv_data(data_file, row)
         
         # Update the current time
         now_time = datetime.now()
