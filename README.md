@@ -2,14 +2,14 @@
 
 ## *Abstract*
 
-### *Objectives at the beginning of the project:*
+### *Objectives at the beginning of the project*
 
 The idea was to photograph an area with vegetation with the infrared camera. Then get the NDVI (Normalized Difference
 Vegetation Index), of that area. Generated these photographs would have been compared with other previous infrared
 images. By making this comparison it is possible to understand if over the years there has been a growth or a reduction
 in the amount of vegetation present in that area, and then evaluate the environmental impact in that area.
 
-### *Problem with machine learning:*
+### *Problem with machine learning*
 
 To obtain a calculation of the NDVI value as precise as possible, several perturbing factors had to be taken into
 account, these are: atmospheric effects, soil effects, anisotropic effects, spectral effects, but above all cloud
@@ -20,7 +20,7 @@ The problem was that the images provided were not suitable for comparison to tra
 incompatible with the intended use, because they were taken with a different raspberry and with different hardware. For
 this reason the objectives of the project have varied and abandoned the idea of machine learning.
 
-### *Final objectives of the project:*
+### *Final objectives of the project*
 
 The images taken previously were not even suitable for a comparison to compare the amount of vegetation. The final
 objective of the project has varied towards two paths:
@@ -29,7 +29,7 @@ objective of the project has varied towards two paths:
   subsequent projects.*
 - *The second possible use of the obtained data would be to compare them with data and images external to Astro Pi.*
 
-## Built with:
+## *Built with*
 
 - *[picamera 1.13](https://picamera.readthedocs.io/en/release-1.13/)*
 - *[random](https://docs.python.org/3/library/random.html)*
