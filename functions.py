@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 from picamera import PiCamera
 from time import time
 
-def capture(imName, test, data_file):
+def capture(imName, test, dFile):
     if test:
         name_image = imName + ".jpg"
         camera = PiCamera()
@@ -24,7 +24,7 @@ def capture(imName, test, data_file):
         print(location)
 
         row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
-        add_csv_data(data_file, row)
+        add_csv_data(dFile, row)
         camera.capture(f"{name_image}")
         return True
     return False
