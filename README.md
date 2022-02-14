@@ -5,20 +5,17 @@
 ### *Objectives at the beginning of the project*
 
 The idea was to photograph an area with vegetation with the infrared camera. Then get the NDVI (Normalized Difference
-Vegetation Index), of that area. Generated these photographs would have been compared with other previous infrared
-images. By making this comparison it is possible to understand if over the years there has been a growth or a reduction
-in the amount of vegetation present in that area, and then evaluate the environmental impact in that area.
-
-### *Problem with machine learning*
-
-To obtain a calculation of the NDVI value as precise as possible, several perturbing factors had to be taken into
-account, these are: atmospheric effects, soil effects, anisotropic effects, spectral effects, but above all cloud
-effects. To solve the problem of clouds it was necessary to train the machine to recognize them. To prepare the machine
-you had to give her images and through a machine learning code she had to be able to recognize clouds.
-
-The problem was that the images provided were not suitable for comparison to train the machine. The photos were
-incompatible with the intended use, because they were taken with a different raspberry and with different hardware. For
-this reason the objectives of the project have varied and abandoned the idea of machine learning.
+Vegetation Index), of that area. Generated these photographs would be compared with other earlier infrared images. Such
+comparison would have allowed to understand the variation of biomass in the years or however the variation in a
+determined span of time. The proposal provided for the use of machine learning, in order to train the software to the
+recognition of clouds and sea, so as to discard photographs that would occupy valuable space to be allocated, instead,
+to photographs with the presence of biomass. Unfortunately, the main objective has become difficult to pursue because
+the photos provided to us will not be comparable to those that will be obtained. They have no vegetation and have been
+taken with a different sensor and with the blue filter, not suitable for the needs of the experiment. For the same
+reason, moreover, machine learning had to be abandoned, as the photographs provided were few and not suitable. Given the
+conditions, we contacted the support group that provided us in January recent photographs taken in the hardware
+conditions in our kit, suggesting to adapt the project objectives to the new conditions. The project has thus changed
+its objectives.
 
 ### *Final objectives of the project*
 
@@ -27,7 +24,8 @@ objective of the project has varied towards two paths:
 
 - *The first possible use of the data obtained would be to create a database of data and images that could benefit
   subsequent projects.*
-- *The second possible use of the obtained data would be to compare them with data and images external to Astro Pi.*
+- *The second possible use of the obtained data would be to compare them with data and images that will be provided by
+  the University of Naples Federico II.*
 
 ## *Built with*
 
