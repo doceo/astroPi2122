@@ -23,15 +23,12 @@ if __name__ == '__main__':
     start_time = datetime.now()
     now_time = datetime.now()
 
-    light = True
-
     # Run a loop for three hours
-    while (now_time < start_time + timedelta(minutes=3)):
+    while (now_time < start_time + timedelta(minutes=180)):
         
         # Variables for the dayNight function
      
-        #light = dayNight()
-        light = True
+        light = dayNight()
         print(light)
 
         if light == True:
