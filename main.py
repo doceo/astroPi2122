@@ -1,10 +1,13 @@
-# MODULI PERSONALI
+# Personal Modules
 from functions import *
 
-# MODULI PER CSV
+# Module for csv
 import csv
 
+#Module for path
 from pathlib import Path
+
+#Module for warm-up
 from time import sleep
 
 '''
