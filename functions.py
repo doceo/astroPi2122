@@ -1,40 +1,51 @@
-# moduli utili al daynight
+# Modules for daynight function
 from random import randint
 from orbit import ISS
 from skyfield.api import load
 
-# moduli utili al csv
+# Modules for csv
 import csv
 from pathlib import Path
 from time import sleep
 from datetime import datetime, timedelta
 
+# Modules for camera
 from picamera import PiCamera
 from time import time
 
+# Define the function for capturing the photos
 def capture(imName, test, dFile):
+    
     if test:
+        
+        # Converting the photos in .jpg format
         name_image = imName + ".jpg"
+        
+        # Variables for Picamera
         camera = PiCamera()
         camera.resolution = (1296, 972)
-
+        
+        # Obtain the current ISS coordinates
         location = ISS.coordinates()
         print(location)
 
+        # Collect and add the coordinates, related to the captured photo, to the csv
         row = (imName, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
         add_csv_data(dFile, row)
+        
+        #Capturing the photo
         camera.capture(f"{name_image}")
         
-        #Camera closed
+        # Closing camera
         camera.close()
         
-        #Camera warm-up time
+        # Camera warm-up time
         sleep(2)
         
         return True
     return False
 
-
+# Define the function that determines if the ISS is orbiting above the illuminated part of the earth
 def dayNight():
     timescale = load.timescale().now()
     ephemeris = load('de421.bsp')
@@ -44,7 +55,7 @@ def dayNight():
         return False
 
 
-# Define the function that create the CSV and write the firts row
+# Define the function that creates the CSV filr and write the first row
 def create_csv(data_file):
     with open(data_file, 'w') as f:
         writer = csv.writer(f)
@@ -52,41 +63,8 @@ def create_csv(data_file):
         writer.writerow(header)
 
 
-# Define the function to write the other row with the values
+# Define the function that writes other rows and the data
 def add_csv_data(data_file, data):
     with open(data_file, 'a') as f:
         writer = csv.writer(f)
         writer.writerow(data)
-
-
-'''
-QUELLO CHE SEGUE È LA PARTE CHE ANDREBBE INCLUSA IN MAIN.PY
-
-'''
-
-if __name__ == '__main__':
-    #### ATTENZIONE, NEL MAIN VA CREATO UNA SOLA VOLTA ALTRIMENTI LO GENERA AD
-    #### OGNI CICLO E LO SOVRASCRIVE SEMPRE
- 
-
-    #ephemeris = load('de421.bsp')
-    timescale = load.timescale()
-
-    # Compute the coordinates of the Earth location directly beneath the ISS
-    #location = ISS.coordinates()
-
-    base_folder = Path(__file__).parent.resolve()
-    data_file = base_folder / 'data-test.csv'
-    create_csv(data_file)
-
-
-    image_name = datetime.now().strftime("%Y%m%d-%H%M%S")
-    path_image = str(base_folder) + "/" + image_name
-    capture(image_name, 1, data_file)
-    #  capture(path_image)
-
-    #row = (image_name, location.latitude.deg, location.longitude.deg, location.elevation.km)
-    #add_csv_data(data_file, row)
-    print("file creato.\n")
-
-    print("è giorno? ", dayNight())
