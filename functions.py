@@ -33,6 +33,7 @@ def capture(imName, test, dFile):
         row = (imName, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
         # Adding the image correlated data to the CSV file
         add_csv_data(dFile, row)
+        print(row)
         
         #Capturing the photo
         camera.capture(f"{name_image}")
