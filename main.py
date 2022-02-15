@@ -35,18 +35,10 @@ if __name__ == '__main__':
             image_name = str(datetime.now().strftime("%Y%m%d-%H%M%S"))
             path_image = str(base_folder) + '/images/' + image_name             
             print(image_name)
-
-            # Compute the coordinates of the Earth location directly beneath the ISS
-            location = ISS.coordinates()
-            #print(location)
             
             # Capturing the images
             if capture(path_image, 1, data_file):
                 print("save")
-                row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
-                print(row)
-                # Adding the image correlated data to the CSV file
-                add_csv_data(data_file, row)
         
         # Update the current time
         now_time = datetime.now()
