@@ -47,4 +47,4 @@ if __name__ == '__main__':
         print(now_time)
         
         # Raspberry warm-up time in order to avoid thermal-throttling
-        sleep(8)
+        sleep(10)
