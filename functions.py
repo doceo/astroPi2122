@@ -1,17 +1,13 @@
 # Modules for daynight function
-from random import randint
 from orbit import ISS
 from skyfield.api import load
 
 # Modules for csv
 import csv
-from pathlib import Path
-from time import sleep
-from datetime import datetime, timedelta
 
 # Modules for camera
 from picamera import PiCamera
-from time import time
+from time import sleep
 
 # Define the function for capturing the photos
 def capture(imName, test, dFile):
