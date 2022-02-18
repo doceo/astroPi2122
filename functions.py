@@ -2,7 +2,7 @@
 from orbit import ISS
 from skyfield.api import load
 
-# Modules for csv
+# Module for csv
 import csv
 
 # Modules for camera
