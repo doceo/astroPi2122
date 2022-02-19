@@ -1,5 +1,5 @@
-# Personal Modules
-from functions import *
+# AstroNat Modules
+from utils import *
 
 # Module for path of the CSV file
 from pathlib import Path
@@ -42,8 +42,8 @@ if __name__ == '__main__':
             print(image_name)
             
             # Capturing the images
-            if capture(path_image, 1, data_file):
-                print("save")
+            if capture(path_image, data_file, 0):
+                print("save image")
         
         # Update the current time
         now_time = datetime.now()
