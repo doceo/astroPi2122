@@ -28,6 +28,7 @@ if __name__ == '__main__':
         
         # Variables for the dayNight function
         timescale = load.timescale().now()
+        # Load ephemeris (high accuracy table with position of celestial objects)
         ephemeris = load('de421.bsp')
         light = dayNight()
         print(light)

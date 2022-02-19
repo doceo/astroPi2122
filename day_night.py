@@ -11,12 +11,11 @@ from orbit import ISS
 from skyfield.api import load
 
 
-# this function returns true if the satellite is in sunlight and returns false if the satellite is not in sunlight
+# Defining the function that returns true if the satellite is in sunlight and returns false if the satellite is not in sunlight
 def dayNight(t):
 
-    # load ephemeris (high accuracy table with position of celestial objects)
+    # Load ephemeris (high accuracy table with position of celestial objects)
     ephemeris = load('de421.bsp')
-
 
     if ISS.at(t).is_sunlit(ephemeris):
         return True

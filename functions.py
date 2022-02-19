@@ -45,8 +45,12 @@ def capture(imName, test, dFile):
 
 # Define the function that determines if the ISS is orbiting above the illuminated part of the earth
 def dayNight():
+    
     timescale = load.timescale().now()
+    
+    # Load ephemeris (high accuracy table with position of celestial objects)
     ephemeris = load('de421.bsp')
+    
     if ISS.at(timescale).is_sunlit(ephemeris):
         return True
     else:
@@ -55,6 +59,7 @@ def dayNight():
 
 # Define the function that creates the CSV filr and write the first row
 def create_csv(data_file):
+    
     with open(data_file, 'w') as f:
         writer = csv.writer(f)
         header = ("Date/time", "Latitude", "Longitude", "Elevation")
@@ -63,6 +68,7 @@ def create_csv(data_file):
 
 # Define the function that writes other rows and the data
 def add_csv_data(data_file, data):
+    
     with open(data_file, 'a') as f:
         writer = csv.writer(f)
         writer.writerow(data)
