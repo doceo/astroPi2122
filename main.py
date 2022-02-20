@@ -38,6 +38,7 @@ if __name__ == '__main__':
         if light == True:
             
             # Determine the path and name of the images
+            # Image's name is: YYMMDD-HHMMSS
             image_name = str(datetime.now().strftime("%Y%m%d-%H%M%S"))
             path_image = str(base_folder) + '/images/' + image_name             
             print(image_name)

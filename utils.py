@@ -9,12 +9,15 @@ import csv
 from picamera import PiCamera
 from time import sleep
 
-# Define the function for capturing the photos
+# Define the function for capturing the images
 def capture(imName, dFile, test):
     
     if test:
         
-        # Associate the photo with its data
+        """"
+        ** name_image, is the key in the csv file to identify an image
+        ** save_file, is the image's name 
+        """
         name_image = imName.split('/')[5]
         save_file = imName + ".jpg"
         
@@ -33,7 +36,7 @@ def capture(imName, dFile, test):
         add_csv_data(dFile, row)
         print(row)
         
-        #Capturing the photo
+        #Capturing the image
         camera.capture(f"{save_file}")
         
         # Closing camera
