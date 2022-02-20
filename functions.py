@@ -15,7 +15,7 @@ def capture(imName, dFile, test):
     if test:
         
         # Converting the photos in .jpg format
-        name_image = imName + ".jpg"
+        name_image = imName.split('/')[3] + ".jpg"
         
         # Variables for Picamera
         camera = PiCamera()

@@ -43,7 +43,7 @@ if __name__ == '__main__':
             print(image_name)
             
             # Capturing the images
-            if capture(image_name, data_file, 1):
+            if capture(path_image, data_file, 1):
                 print("save")
         
         # Update the current time
