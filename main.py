@@ -24,7 +24,7 @@ if __name__ == '__main__':
     now_time = datetime.now()
 
     # Run loop for three hours
-    while (now_time < start_time + timedelta(minutes=180)):
+    while (now_time < start_time + timedelta(minutes=3)):
         
         # Variables for the dayNight function
         timescale = load.timescale().now()
@@ -42,7 +42,7 @@ if __name__ == '__main__':
             print(image_name)
             
             # Capturing the images
-            if capture(path_image, data_file, 0):
+            if capture(image_name, data_file, 0):
                 print("save image")
         
         # Update the current time
