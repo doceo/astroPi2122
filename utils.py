@@ -22,6 +22,7 @@ def capture(imName, dFile, test):
         save_file = imName + ".jpg"
         print(name_image)
         print(save_file)
+        print (type (save_file))
         
         # Variables for Picamera
         camera = PiCamera()
