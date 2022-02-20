@@ -77,3 +77,30 @@ def add_csv_data(data_file, data):
     with open(data_file, 'a') as f:
         writer = csv.writer(f)
         writer.writerow(data)
+        
+"""
+from logzero import logger, logfile
+
+base_folder = Path(__file__).parent.resolve()
+logfile(base_folder/"events.log")
+
+for i in range(10):
+    logger.info(f"Loop number {i+1} started")
+    ...
+    sleep(60)
+
+for i in range(10):
+    if night_or_dark() == 'night':
+        logger.info('night - wait 60 seconds')
+        sleep(60)
+    else:
+        ...
+
+try:
+    do_something()
+ except Exception as e:
+    logger.error(f'{e.__class__.__name__}: {e})')
+
+Sito
+https://projects.raspberrypi.org/en/projects/code-for-your-astro-pi-mission-space-lab-experiment/3
+"""
