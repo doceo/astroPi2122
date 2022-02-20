@@ -1,5 +1,5 @@
 # Personal Modules
-from functions import *
+from utils import *
 
 # Module for path of the CSV file
 from pathlib import Path
