@@ -24,10 +24,11 @@ if __name__ == '__main__':
     now_time = datetime.now()
 
     # Run loop for three hours
-    while (now_time < start_time + timedelta(minutes=180)):
+    while (now_time < start_time + timedelta(minutes=3)):
         
         # Variables for the dayNight function
         timescale = load.timescale().now()
+        
         # Load ephemeris (high accuracy table with position of celestial objects)
         ephemeris = load('de421.bsp')
         light = dayNight()
@@ -42,7 +43,7 @@ if __name__ == '__main__':
             print(image_name)
             
             # Capturing the images
-            if capture(path_image, 1, data_file):
+            if capture(image_name, data_file, 1):
                 print("save")
         
         # Update the current time

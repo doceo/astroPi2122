@@ -10,7 +10,7 @@ from picamera import PiCamera
 from time import sleep
 
 # Define the function for capturing the photos
-def capture(imName, test, dFile):
+def capture(imName, dFile, test):
     
     if test:
         
@@ -27,6 +27,7 @@ def capture(imName, test, dFile):
 
         # Collect and add the coordinates, related to the captured photo, to the csv
         row = (imName, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
+        
         # Adding the image correlated data to the CSV file
         add_csv_data(dFile, row)
         print(row)
@@ -57,7 +58,7 @@ def dayNight():
         return False
 
 
-# Define the function that creates the CSV filr and write the first row
+# Define the function that creates the CSV file and write the first row
 def create_csv(data_file):
     
     with open(data_file, 'w') as f:
