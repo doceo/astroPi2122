@@ -5,20 +5,11 @@ Substantially, the software verifies that the space station flies over a sunlit 
 
 The project foresees the study of the collected photographs, comparing the ndvi value of the biomass areas not covered by clouds with the value of the archive photographs, in order to verify the differences and possible contractions of the areas covered by vegetation.
 
-### *Objectives at the beginning of the project*
+## *Criticality of the objectives*
 
-The idea was to photograph an area with vegetation with the infrared camera. Then get the NDVI (Normalized Difference
-Vegetation Index), of that area. Generated these photographs would be compared with other earlier infrared images. Such
-comparison would have allowed to understand the variation of biomass in the years or however the variation in a
-determined span of time. The proposal provided for the use of machine learning, in order to train the software to the
-recognition of clouds and sea, so as to discard photographs that would occupy valuable space to be allocated, instead,
-to photographs with the presence of biomass. Unfortunately, the main objective has become difficult to pursue because
-the photos provided to us will not be comparable to those that will be obtained. They have no vegetation and have been
-taken with a different sensor and with the blue filter, not suitable for the needs of the experiment. For the same
-reason, moreover, machine learning had to be abandoned, as the photographs provided were few and not suitable. Given the
-conditions, we contacted the support group that provided us in January recent photographs taken in the hardware
-conditions in our kit, suggesting to adapt the project objectives to the new conditions. The project has thus changed
-its objectives.
+In relation to the objectives set, a prerequisite for the comparison on NDVI values, as confirmed by the Astropi team, the archive photos provided by the experiences of previous years are not usable, because taken with different tools, unsuitable filters and the earth was mainly obscured by clouds. 
+We will then proceed with the collection of the images which in a next phase will be discarded according to the biomass areas detected. Downstream of the selection, they will be properly compared with archive images of other sensors. In order to make this comparison, parametric corrections will be made for the calculation of the NDVI value, as suggested by the Department of Electrical Engineering and Information Technologies (DIETI) of the University of Naples Federico II, contacted to better understand the management and the evaluation of the NDVI value. Another benefit of the massive collection of images, without any selection before saving, is the availability to offer them for future scientific projects. In this way it will be possible to build up an archive of images taken with updated tools, so as to be able, possibly in a future project, to compare photographs with the same tool
+
 
 ### *Final objectives of the project*
 
