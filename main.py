@@ -11,9 +11,7 @@ from time import sleep
 from datetime import datetime, timedelta
 
 # Main code
-if __name__ == '__main__':
-    print('main.py - AstroPI 2021/2022')
-
+def main_function():
     # Initialise the CSV file
     base_folder = Path(__file__).parent.resolve()
     data_file = str(base_folder) + '/data.csv'
@@ -53,3 +51,7 @@ if __name__ == '__main__':
         
         # Raspberry warm-up time in order to avoid thermal-throttling
         sleep(11.5)
+
+if __name__ == '__main__':
+    print('main.py - AstroPI 2021/2022')
+    main_function()
