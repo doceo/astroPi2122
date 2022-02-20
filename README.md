@@ -36,11 +36,8 @@ In the image above, "add_csv_data" is missing.
 ## *Built with*
 
 - *[picamera 1.13](https://picamera.readthedocs.io/en/release-1.13/)*
-- *[random](https://docs.python.org/3/library/random.html)*
 - *[csv](https://docs.python.org/3/library/csv.html)*
 - *[orbit](https://orbit-ml.readthedocs.io/en/latest/)*
 - *[skyfield](https://rhodesmill.org/skyfield/)*
 - *[time](https://docs.python.org/3/library/time.html)*
 - *[datetime](https://docs.python.org/3/library/datetime.html#module-datetime)*
-- *[pillow](https://pillow.readthedocs.io/en/stable/)*
-
