@@ -15,7 +15,7 @@ def capture(imName, dFile, test):
     if test:
         
         # Converting the photos in .jpg format
-        name_image = imName.split('/')[3] + ".jpg"
+        name_image = imName.split('/')[5] + ".jpg"
         
         # Variables for Picamera
         camera = PiCamera()
@@ -26,7 +26,7 @@ def capture(imName, dFile, test):
         print(location)
 
         # Collect and add the coordinates, related to the captured photo, to the csv
-        row = (name_image, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
+        row = (name_image[:-4], location.latitude.degrees, location.longitude.degrees, location.elevation.km)
         
         # Adding the image correlated data to the CSV file
         add_csv_data(dFile, row)
