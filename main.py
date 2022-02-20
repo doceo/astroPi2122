@@ -22,7 +22,7 @@ def main_function():
     now_time = datetime.now()
 
     # Run loop for three hours
-    while (now_time < start_time + timedelta(minutes=3)):
+    while (now_time < start_time + timedelta(minutes=180)):
         
         # Variables for the dayNight function
         timescale = load.timescale().now()

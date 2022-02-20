@@ -20,9 +20,6 @@ def capture(imName, dFile, test):
         """
         name_image = imName.split('/')[5]
         save_file = imName + ".jpg"
-        print(name_image)
-        print(save_file)
-        print (type (save_file))
         
         # Variables for Picamera
         camera = PiCamera()
