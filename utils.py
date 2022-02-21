@@ -24,7 +24,7 @@ def capture(imName, dFile, test):
         
         # Variables for Picamera
         camera = PiCamera()
-        camera.resolution = (1296, 972)
+        camera.resolution = (4056, 3040)
         
         # Obtain the current ISS coordinates
         location = ISS.coordinates()
