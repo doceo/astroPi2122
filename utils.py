@@ -20,6 +20,8 @@ def capture(imName, dFile, test):
         """
         name_image = imName.split('/')[5]
         save_file = imName + ".jpg"
+
+
         
         # Variables for Picamera
         camera = PiCamera()
@@ -30,14 +32,17 @@ def capture(imName, dFile, test):
         print(location)
 
         # Collect and add the coordinates, related to the captured photo, to the csv
+
         row = (name_image, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
-        
+       
         # Adding the image correlated data to the CSV file
         add_csv_data(dFile, row)
         print(row)
         
-        #Capturing the image
-        camera.capture(f"{save_file}")
+
+        #Capturing the photo
+        camera.capture(f"{name_image}")
+
         
         # Closing camera
         camera.close()
@@ -62,10 +67,13 @@ def dayNight():
         return False
 
 
+
 # Define the function that creates the CSV file and write the first row
 def create_csv(data_file):
     
     with open(data_file, 'a+') as f:
+
+
         writer = csv.writer(f)
         header = ("Date/time", "Latitude", "Longitude", "Elevation")
         writer.writerow(header)
@@ -76,6 +84,7 @@ def add_csv_data(data_file, data):
     
     with open(data_file, 'a') as f:
         writer = csv.writer(f)
+
         writer.writerow(data)
         
 """
@@ -104,3 +113,6 @@ try:
 Sito
 https://projects.raspberrypi.org/en/projects/code-for-your-astro-pi-mission-space-lab-experiment/3
 """
+
+        writer.writerow(data)
+

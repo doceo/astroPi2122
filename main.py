@@ -1,4 +1,5 @@
-# Personal Modules
+
+# AstroNat Modules
 from utils import *
 
 # Module for path of the CSV file
@@ -22,7 +23,7 @@ def main_function():
     now_time = datetime.now()
 
     # Run loop for three hours
-    while (now_time < start_time + timedelta(minutes=180)):
+    while (now_time < start_time + timedelta(minutes=3)):
         
         # Variables for the dayNight function
         timescale = load.timescale().now()
@@ -42,8 +43,9 @@ def main_function():
             print(image_name)
             
             # Capturing the images
-            if capture(path_image, data_file, 1):
-                print("save")
+
+            if capture(image_name, data_file, 0):
+                print("save image")
         
         # Update the current time
         now_time = datetime.now()
