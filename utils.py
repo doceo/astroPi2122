@@ -18,7 +18,7 @@ def capture(imName, dFile, test):
         ** name_image, is the key in the csv file to identify an image
         ** save_file, is the image's name 
         """
-        print(imName)
+
         name_image = imName.split('/')[5]
         save_file = imName + ".jpg"
         
@@ -48,7 +48,7 @@ def capture(imName, dFile, test):
         sleep(2)
         
         return True
-        
+
 
 # Define the function that determines if the ISS is orbiting above the illuminated part of the earth
 def dayNight():
@@ -67,7 +67,7 @@ def dayNight():
 # Define the function that creates the CSV file and write the first row
 def create_csv(data_file):
     
-    with open(data_file, 'a+') as f:
+    with open(data_file, 'w') as f:
         writer = csv.writer(f)
         header = ("Date/time", "Latitude", "Longitude", "Elevation")
         writer.writerow(header)
