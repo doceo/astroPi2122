@@ -5,7 +5,7 @@
 
 *GROUP* : AstroNet
 
-*MEMBERS* :  Biasi Luca, Bocchetti Francesco, Gallo Renato, Greco Francesco Saverio, Iannuzzi Vittorio, Raffaele Mariano
+*MEMBERS* :  Biasi Luca, Bocchetti Francesco, Gallo Renato, Greco Francesco Saverio, Iannuzzi Vittorio, Mariano Raffaele
 
 *SCHOOL* :  Giambattista Vico, Naples 
 ***
