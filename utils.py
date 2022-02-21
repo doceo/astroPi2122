@@ -65,7 +65,7 @@ def dayNight():
 # Define the function that creates the CSV file and write the first row
 def create_csv(data_file):
     
-    with open(data_file, 'w') as f:
+    with open(data_file, 'a+') as f:
         writer = csv.writer(f)
         header = ("Date/time", "Latitude", "Longitude", "Elevation")
         writer.writerow(header)
