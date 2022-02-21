@@ -75,7 +75,7 @@ def create_csv(data_file):
 # Define the function that writes other rows and the data
 def add_csv_data(data_file, data):
     
-    with open(data_file, 'a') as f:
+    with open(data_file, 'a+') as f:
         writer = csv.writer(f)
         writer.writerow(data)
         
