@@ -1,4 +1,12 @@
-# *AstroNet*
+# Astropi 
+2021/2022
+
+MENTOR: Diomede Mazzone
+
+GROUP: AstroNet
+
+MEMBERS:  Biasi Luca, Bocchetti Francesco, Gallo Renato, Greco Francesco Saverio, Iannuzzi Vittorio, Raffaele Mariano
+***
 ## *Abstract*
 The aim of the project is to study the variation of biomass on planet Earth. To achieve this goal, it was assumed to photograph the planet with the infrared camera, identifying the areas with the presence of vegetation through NDVI (Normalized Difference Vegetation Index) processing. To obtain the state and the variation of biomass in a given period of time, a comparison with archive photographs was hypothesized.
 Substantially, the software verifies that the space station flies over a sunlit area, taking photographs with a cadence compatible with the memory occupation established by Team AstroPi.
