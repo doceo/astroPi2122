@@ -16,7 +16,6 @@ from datetime import datetime, timedelta
 # Defining the main function
 def main_function():
 
-
     # Initialise the CSV file
     base_folder = Path(__file__).parent.resolve()
     data_file = str(base_folder) + '/data.csv'
