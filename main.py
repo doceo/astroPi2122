@@ -68,6 +68,8 @@ def main_function():
         
         # Raspberry warm-up time in order to avoid thermal-throttling
         sleep(11.5)
+        
+        loop += 1
 
 # Main code
 if __name__ == '__main__':
