@@ -13,7 +13,7 @@ from time import sleep
 # Define the function for capturing the images
 def capture(imName, dFile, test):
     
-    if test:
+    if not test:
         
         """"
         ** name_image, is the key in the csv file to identify an image
