@@ -55,7 +55,7 @@ def main_function():
             print(image_name)
             
             # Capturing the images
-            if capture(image_name, data_file, 0):
+            if capture(image_name, data_file):
                 print("save image")
         
         else:
