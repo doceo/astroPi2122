@@ -2,6 +2,7 @@
 from orbit import ISS
 from skyfield.api import load
 
+
 # Module for csv
 import csv
 
@@ -79,7 +80,6 @@ def add_csv_data(data_file, data):
         writer.writerow(data)
         
 """
-from logzero import logger, logfile
 
 base_folder = Path(__file__).parent.resolve()
 logfile(base_folder/"events.log")
