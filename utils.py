@@ -14,7 +14,7 @@ from time import sleep
 def capture(imName, dFile, test):
 
     if not test:
-        """"
+        """
         ** name_image, is the key in the csv file to identify an image
         ** save_file, is the image's name 
         """
@@ -38,7 +38,7 @@ def capture(imName, dFile, test):
         add_csv_data(dFile, row)
         print(row)
         
-        #Capturing the image
+        # Capturing the image
         camera.capture(f"{save_file}")
         
         # Closing camera
@@ -78,5 +78,4 @@ def add_csv_data(data_file, data):
     
     with open(data_file, 'a+') as f:
         writer = csv.writer(f)
-        writer.writerow(data)
-        
+        writer.writerow(data)       

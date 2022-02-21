@@ -13,6 +13,7 @@ from time import sleep
 # Module for the while loop
 from datetime import datetime, timedelta
 
+# Defining the main function
 def main_function():
 
 
@@ -28,13 +29,13 @@ def main_function():
     start_time = datetime.now()
     now_time = datetime.now()
 
-    # loop is the variable needed to save
+    # Loop is the variable needed to save
     loop = 0
 
     # Run loop for three hours
     while (now_time < start_time + timedelta(minutes=3)):
 
-        # save each lap in log
+        # Save each lap in log
         logger.info(f'Loop number {loop+1} started')
 
         # Variables for the dayNight function
@@ -42,8 +43,6 @@ def main_function():
         # Load ephemeris (high accuracy table with position of celestial objects)
         ephemeris = load('de421.bsp')
         light = dayNight()
-        #print(light)
-
 
         # If the ISS is orbiting above the illuminated part of the earth run this code
         if light == True:
