@@ -24,9 +24,9 @@ def capture(imName, dFile, test):
         
         # Variables for Picamera
         camera = PiCamera()
-        #camera.resolution = (4056, 3040)
-        camera.resolution = (800, 600)
-
+        
+        camera.resolution = (4056, 3040)
+        
         # Obtain the current ISS coordinates
         location = ISS.coordinates()
         print(location)
@@ -80,28 +80,3 @@ def add_csv_data(data_file, data):
         writer = csv.writer(f)
         writer.writerow(data)
         
-"""
-
-base_folder = Path(__file__).parent.resolve()
-logfile(base_folder/"events.log")
-
-for i in range(10):
-    logger.info(f"Loop number {i+1} started")
-    ...
-    sleep(60)
-
-for i in range(10):
-    if night_or_dark() == 'night':
-        logger.info('night - wait 60 seconds')
-        sleep(60)
-    else:
-        ...
-
-try:
-    do_something()
- except Exception as e:
-    logger.error(f'{e.__class__.__name__}: {e})')
-
-Sito
-https://projects.raspberrypi.org/en/projects/code-for-your-astro-pi-mission-space-lab-experiment/3
-"""
