@@ -35,7 +35,7 @@ def main_function():
     while (now_time < start_time + timedelta(minutes=3)):
 
         # save each lap in log
-        logger.info('Loop number started')
+        logger.info(f'Loop number {loop} started')
 
         # Variables for the dayNight function
         timescale = load.timescale().now()
