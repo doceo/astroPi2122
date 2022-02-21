@@ -19,6 +19,8 @@ The project foresees the study of the collected photographs, comparing the ndvi 
 
 In relation to the objectives set, a prerequisite for the comparison on NDVI values, as confirmed by the Astropi team, the archive photos provided by the experiences of previous years are not usable, because taken with different tools, unsuitable filters and the earth was mainly obscured by clouds. 
 We will then proceed with the collection of the images which in a next phase will be discarded according to the biomass areas detected. Downstream of the selection, they will be properly compared with archive images of other sensors. In order to make this comparison, parametric corrections will be made for the calculation of the NDVI value, as suggested by the Department of Electrical Engineering and Information Technologies (DIETI) of the University of Naples Federico II, contacted to better understand the management and the evaluation of the NDVI value. Another benefit of the massive collection of images, without any selection before saving, is the availability to offer them for future scientific projects. In this way it will be possible to build up an archive of images taken with updated tools, so as to be able, possibly in a future project, to compare photographs with the same tool. Based on the constraints imposed and the hardware available, it was decided to take 475 photographs during the daytime overflight phase.
+To achieve this, the available memory of the GPU had to be expanded to 256 Mb.
+
 
 
 
