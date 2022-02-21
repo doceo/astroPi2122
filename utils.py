@@ -11,44 +11,41 @@ from picamera import PiCamera
 from time import sleep
 
 # Define the function for capturing the images
-def capture(imName, dFile, test):
+def capture(imName, dFile):
+           
+    """"
+    ** name_image, is the key in the csv file to identify an image
+    ** save_file, is the image's name 
+    """
+    name_image = imName.split('/')[5]
+    save_file = imName + ".jpg"
     
-    if not test:
-        
-        """"
-        ** name_image, is the key in the csv file to identify an image
-        ** save_file, is the image's name 
-        """
-        name_image = imName.split('/')[5]
-        save_file = imName + ".jpg"
-        
-        # Variables for Picamera
-        camera = PiCamera()
-        #camera.resolution = (4056, 3040)
-        camera.resolution = (800, 600)
+    # Variables for Picamera
+    camera = PiCamera()
+    #camera.resolution = (4056, 3040)
+    camera.resolution = (800, 600)
 
-        # Obtain the current ISS coordinates
-        location = ISS.coordinates()
-        print(location)
+    # Obtain the current ISS coordinates
+    location = ISS.coordinates()
+    print(location)
 
-        # Collect and add the coordinates, related to the captured photo, to the csv
-        row = (name_image, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
-        
-        # Adding the image correlated data to the CSV file
-        add_csv_data(dFile, row)
-        print(row)
-        
-        #Capturing the image
-        camera.capture(f"{save_file}")
-        
-        # Closing camera
-        camera.close()
-        
-        # Camera warm-up time
-        sleep(2)
-        
-        return True
-    return False
+    # Collect and add the coordinates, related to the captured photo, to the csv
+    row = (name_image, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
+    
+    # Adding the image correlated data to the CSV file
+    add_csv_data(dFile, row)
+    print(row)
+    
+    #Capturing the image
+    camera.capture(f"{save_file}")
+    
+    # Closing camera
+    camera.close()
+    
+    # Camera warm-up time
+    sleep(2)
+    
+    return True
 
 # Define the function that determines if the ISS is orbiting above the illuminated part of the earth
 def dayNight():
