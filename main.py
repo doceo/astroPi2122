@@ -55,9 +55,11 @@ def main_function():
             print(image_name)
             
             # Capturing the images
-            if capture(path_image, data_file, 0):
-                print("save image")
-        
+            try: 
+                capture(path_image, data_file, 0)
+            except Exception as e:
+                logger.error(f'{e.__class__.__name__}: {e}')
+            
         else:
             logger.info('night - wait 20 seconds')
             sleep(20)
