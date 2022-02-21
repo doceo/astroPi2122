@@ -44,6 +44,7 @@ def main_function():
 
         # If the ISS is orbiting above the illuminated part of the earth run this code
         if light == True:
+            logger.info('day - save image')
 
             # Determine the path and name of the images
             image_name = str(datetime.now().strftime("%Y%m%d-%H%M%S"))
@@ -55,8 +56,8 @@ def main_function():
                 print("save image")
         
         else:
-            logger.info('night - wait 10 seconds')
-            sleep(10)
+            logger.info('night - wait 20 seconds')
+            sleep(20)
 
         # Update the current time
         now_time = datetime.now()
