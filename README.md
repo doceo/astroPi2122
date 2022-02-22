@@ -22,17 +22,21 @@ We will then proceed with the collection of the images which in a next phase wil
 To achieve this, the available memory of the GPU had to be expanded to 256 Mb.
 
 
-
-
 ## *Development process*
 
 As described above, the software performs a continuous cycle lasting 180 minutes, as indicated by the Support Team. Inside the cycle, it is checked whether the overflight area is illuminated by the sun. During the test phase, the reliability of the function that verifies this condition was verified, by comparing the data extracted from this with others on the astronomical site, which reports the position of the ISS in real time. In this way it was found that for the function implemented by astroNat the duration of the day is 5 minutes longer than that of the site. For reasons related to the organization of the project, it was not possible to optimize this aspect, and in any case the error committed by the implemented functionality is considered acceptable. Once the position has been verified, the photograph is taken and the CSV file for the collection of information related to the position is updated: longitude, latitude and altitude. To create this software we proceeded by successive approximations, so as to be able to find a balance between the waiting time for shooting and the maximum amount of usable space. The final result leads to the saving of 475 photographs for a total wait of 13.5 seconds between one shot and the next.
 
-
-
 ## *Code structure*
 The software was structured in modules. The main function is developed in such a way as to import the necessary external modules, and the utils module developed by the astroNet team.
 The functions used by main in the main.py file have been implemented in utils.
+```
+main.py
+utils.py
+de421.bsp
+README.md
+events.log
+images / main_function.jpg
+```
 
 ### *utils.py*
 - ` dayNight() ` allows you to distinguish day and night, is based on the orbit and skyfield.api library.
