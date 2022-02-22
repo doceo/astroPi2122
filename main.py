@@ -66,7 +66,7 @@ def main_function():
         print(now_time)
         
         # Raspberry warm-up time in order to avoid thermal-throttling
-        sleep(11.5)
+        sleep(12)
         
         loop += 1
 
