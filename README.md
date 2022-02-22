@@ -47,7 +47,7 @@ images / main_function.jpg
 
 ### *main.py structure*
 The main is the cycle lasting 180 minutes in which all the functions are enclosed, the logic is as follows:
-![Diagramma di flusso](https://user-images.githubusercontent.com/74982114/154856678-1769d868-8525-4828-91db-a0860660bd0a.jpg)
+![Diagramma](https://user-images.githubusercontent.com/74982114/155156249-377d8221-0992-41ec-a9af-f7810db8e412.jpg)
 
 In the image above, "add_csv_data" is missing.
 
