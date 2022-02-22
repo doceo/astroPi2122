@@ -2,7 +2,6 @@
 from orbit import ISS
 from skyfield.api import load
 
-
 # Module for csv
 import csv
 
@@ -14,6 +13,7 @@ from time import sleep
 def capture(imName, dFile, test):
 
     if not test:
+        
         """
         ** name_image, is the key in the csv file to identify an image
         ** save_file, is the image's name 
@@ -22,9 +22,9 @@ def capture(imName, dFile, test):
         name_image = imName.split('/')[5]
         save_file = imName + ".jpg"
         
+        
         # Variables for Picamera
         camera = PiCamera()
-        
         camera.resolution = (4056, 3040)
         
         # Obtain the current ISS coordinates
