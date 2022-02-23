@@ -7,7 +7,7 @@
 
 **MEMBERS** :  Biasi Luca, Bocchetti Francesco, Gallo Renato, Greco Francesco Saverio, Iannuzzi Vittorio, Mariano Raffaele
 
-**SCHOOL** :  Liceo Ginnasio "G. B. Vico", Naples 
+**SCHOOL** :  Liceo Ginnasio "G. B. Vico", Naples - Italy
 ***
 ## Abstract
 The aim of the project is to study the variation of biomass on planet Earth. To achieve this goal, it was assumed to photograph the planet with the infrared camera, identifying the areas with the presence of vegetation through NDVI (Normalized Difference Vegetation Index) processing. To obtain the state and the variation of biomass in a given period of time, a comparison with archive photographs was hypothesized.
@@ -30,7 +30,7 @@ The final result leads to the saving of 501 photographs for a total wait of 11.5
 
 ## Code structure
 The software was structured in modules. The main function is developed in such a way as to import the necessary external modules, and the utils module developed by the astroNat team.
-The functions used by main_function() in main.py file have been implemented in utils.
+The functions used by main_function() in main.py file have been implemented in utils.py.
 ```
 main.py
 utils.py
