@@ -22,7 +22,6 @@ def capture(imName, dFile, test):
         name_image = imName.split('/')[5]
         save_file = imName + ".jpg"
         
-        
         # Variables for Picamera
         camera = PiCamera()
         camera.resolution = (4056, 3040)
