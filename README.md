@@ -30,7 +30,7 @@ The final result leads to the saving of 501 photographs for a total wait of 11.5
 
 ## Code structure
 The software was structured in modules. The main function is developed in such a way as to import the necessary external modules, and the utils module developed by the astroNat team.
-The functions used by main_function() in main.py file have been implemented in utils.
+The functions used by main_function() in main.py file have been implemented in utils.py.
 ```
 main.py
 utils.py
