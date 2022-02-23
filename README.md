@@ -50,8 +50,7 @@ The functions present in utils.py are:
 
 - ` create_csv(data_file) `  is the function that creates the csv file and structures the columns, it is based on the csv and path library. It takes in input the name of the file to create.
 
-- ` add_csv_data(data_file, data) `It takes as input the name of the file on which to write and the line to put in the queue.
-
+- ` add_csv_data(data_file, data) `is the function that uses capture to add the data of the image acquired into the csv, it is based on the csv and path library. It takes as input the name of the file on which to write and the line to put in the queue.
 
 
 ### main.py structure
