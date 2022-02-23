@@ -3,7 +3,7 @@
 
 **MENTOR**: Prof. Diomede Mazzone
 
-**GROUP** : AstroNet
+**GROUP** : AstroNat
 
 **MEMBERS** :  Biasi Luca, Bocchetti Francesco, Gallo Renato, Greco Francesco Saverio, Iannuzzi Vittorio, Mariano Raffaele
 
