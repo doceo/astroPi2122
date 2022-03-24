@@ -10,7 +10,7 @@ def cropping(image):
     # Create same size alpha layer with circle
     alpha = Image.new('L', img.size, 0)
     draw = ImageDraw.Draw(alpha)
-    draw.pieslice([200, 200, 800, 800], 0, 360, fill=255)
+    draw.pieslice([166, 7, 879, 737], 0, 360, fill=255)
 
     # Convert alpha Image to numpy array
     np_alpha = np.array(alpha)
@@ -24,4 +24,3 @@ def cropping(image):
     # Show the cropped image
     img2 = Image.open('result.png')
     img2.show()
-
