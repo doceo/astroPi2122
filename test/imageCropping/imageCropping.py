@@ -1,8 +1,9 @@
 import numpy as np
 from PIL import Image, ImageDraw
+import os
 
 
-def cropping(image):
+def cropping(image, N):
     # Open the input image as numpy array, convert to RGB
     img = Image.open(image).convert("RGB")
     np_image = np.array(img)
@@ -10,7 +11,7 @@ def cropping(image):
     # Create same size alpha layer with circle
     alpha = Image.new('L', img.size, 0)
     draw = ImageDraw.Draw(alpha)
-    draw.pieslice([166, 7, 879, 737], 0, 360, fill=255)
+    draw.pieslice([829, 29, 3669, 2889], 0, 360, fill=255)
 
     # Convert alpha Image to numpy array
     np_alpha = np.array(alpha)
@@ -19,8 +20,14 @@ def cropping(image):
     np_image = np.dstack((np_image, np_alpha))
 
     # Save with alpha
-    Image.fromarray(np_image).save('result.png')
+    for photo in range(0, N + 1):
+        name = 'photo ' + str(photo)
+        Image.fromarray(np_image).save(name + '.png')
 
-    # Show the cropped image
-    img2 = Image.open('result.png')
-    img2.show()
+
+path = r"F:\sito\Foto"
+lista = os.listdir(path)
+
+for x in lista:
+    print(x)
+    cropping(r"F:\\sito\\Foto" + "\\" + x, len(lista))
