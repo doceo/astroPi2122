@@ -3,7 +3,7 @@ from PIL import Image, ImageDraw
 import os
 
 
-def cropping(image, N):
+def cropping(image):
     # Open the input image as numpy array, convert to RGB
     img = Image.open(image).convert("RGB")
     np_image = np.array(img)
@@ -20,14 +20,5 @@ def cropping(image, N):
     np_image = np.dstack((np_image, np_alpha))
 
     # Save with alpha
-    for photo in range(0, N + 1):
-        name = 'photo ' + str(photo)
-        Image.fromarray(np_image).save(name + '.png')
-
-
-path = r"F:\sito\Foto"
-lista = os.listdir(path)
-
-for x in lista:
-    print(x)
-    cropping(r"F:\\sito\\Foto" + "\\" + x, len(lista))
+    name = str(image)
+    Image.fromarray(np_image).save(name + ' crop' + '.png')
