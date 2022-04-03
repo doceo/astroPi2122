@@ -1,5 +1,6 @@
 import numpy as np
 from PIL import Image, ImageDraw
+import os
 
 
 def cropping(image):
@@ -10,7 +11,7 @@ def cropping(image):
     # Create same size alpha layer with circle
     alpha = Image.new('L', img.size, 0)
     draw = ImageDraw.Draw(alpha)
-    draw.pieslice([166, 7, 879, 737], 0, 360, fill=255)
+    draw.pieslice([829, 29, 3669, 2889], 0, 360, fill=255)
 
     # Convert alpha Image to numpy array
     np_alpha = np.array(alpha)
@@ -19,8 +20,5 @@ def cropping(image):
     np_image = np.dstack((np_image, np_alpha))
 
     # Save with alpha
-    Image.fromarray(np_image).save('result.png')
-
-    # Show the cropped image
-    img2 = Image.open('result.png')
-    img2.show()
+    name = str(image)
+    Image.fromarray(np_image).save(name + ' crop' + '.png')
