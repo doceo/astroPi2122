@@ -127,7 +127,7 @@ def main_function():
     
     base_folder = Path(__file__).parent.resolve()
 
-    image_name = '/images/image-test'
+    image_name = '/images'
     image_original = str(base_folder) + image_name +'.jpg'
     print(image_original)
     print(image_name)
