@@ -122,3 +122,14 @@ def ndviConversion(image):
     cv2.imwrite(image_color_map, color_mapped_image)
 
     print("fatto.\n\n")
+    
+def main_function():
+    
+    base_folder = Path(__file__).parent.resolve()
+
+    image_name = '/images/image-test'
+    image_original = str(base_folder) + image_name +'.jpg'
+    print(image_original)
+    print(image_name)
+
+main_function()
