@@ -1,6 +1,5 @@
 # il seguente link spiega il codice
 # https://projects.raspberrypi.org/en/projects/astropi-ndvi
-from fileinput import filename
 import cv2
 from PIL import Image
 import numpy as np
@@ -20,6 +19,7 @@ from pathlib import Path
 # le funzioni che seguono servono ad annulare i possibili errori di valutaizone
 # di ndvi sull'immagine originale.
 
+
 def loadImage(filename):
     print(f'try to load image {filename}')
     img = Image.open(filename).copy()
@@ -30,7 +30,55 @@ def saveImage(filename, img):
     print(f'saving {filename}')
     img.save(filename)
     print(f'{filename} saved. bye\n\n')
-    
+
+def getImageSize(img):
+    print('reading image size')
+    size = img.size
+    print(f'image size is {size}\n')
+    return size
+
+def calculateHowManyRect(imgSize, lx, ly):
+    nx = imgSize[0] // lx
+    ny = imgSize[1] // ly
+    n = imgSize[0]*imgSize[1] // (lx*ly)
+    return (n, nx, ny)
+
+def haveRect(x, y, lx, ly, imgSize):
+    return (x+lx <= imgSize[0] and y+ly <= imgSize[1])
+
+def processRect(x, y, lx, ly, img, imgSize):
+    rectValue = 0
+    for xx in range(x, x+lx):
+        for yy in range(y, y+ly):
+            pixelData = img.getpixel((xx,yy))
+            rectValue += sum(pixelData)
+
+    if rectValue/(lx*ly*3) < 30:
+        # print(f'hey {rectValue/(lx*ly*3)}')
+        for xx in range(x, x + lx):
+            for yy in range(y, y + ly):
+                img.putpixel((xx, yy), (0,0,0))
+
+    x += lx
+    if x >= imgSize[0]:
+        x = 0
+        y += ly
+    return (x, y)
+
+
+def display(image, image_name):
+    image = np.array(image, dtype=float) / float(255)
+    shape = image.shape
+    height = int(shape[0] / 3)
+    width = int(shape[1] / 3)
+    image = cv2.resize(image, (width, height))
+    cv2.namedWindow(image_name)
+
+    cv2.imshow(image_name, imageCircle)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
 def contrast_stretch(im):
     # find the top brightness of pixels in the image in the top 5% and bottom 5% of your image.
     in_min = np.percentile(im, 5)
@@ -45,7 +93,8 @@ def contrast_stretch(im):
     out = im - in_min
     out *= ((out_min - out_max) / (in_min - in_max))
     out += in_min
-    return 
+    return out
+
 
 def calc_ndvi(image):
     # To adjust the pixels in the image and only work with red and blue, the image needs splitting into its three
@@ -78,6 +127,7 @@ def contrastNdvi(contrasted):
     #display(ndvi, 'NDVI')
     ndvi_contrasted = contrast_stretch(ndvi)
 
+
     #display(ndvi_contrasted, 'NDVI contrasted')
     return ndvi_contrasted
 
@@ -86,6 +136,7 @@ def contrastNdvi(contrasted):
 catch patches of brighter pixels. To once again enhance the image, it can be run through the contrast_stretch function.
 Now you can see healthy plant life by the brightness of the pixels in the ndvi_contrasted.png image.
 """
+
 
 def colorMapping(ndvi_contrasted):
     # Now the image can be converted using cv2 colour mapping, and written out as a new file
@@ -96,31 +147,7 @@ def colorMapping(ndvi_contrasted):
 
     return color_mapped_image
 
-def ndviConversion(image):
 
-    img = cv2.imread(image)
-    contrasted = contrast_stretch(img)
-
-    image_contrasted = image[:-4] + "-contrasted.jpg"   
-    cv2.imwrite(image_contrasted, contrasted)
-    print(image_contrasted)
-
-
-    ndvi = calc_ndvi(contrasted)
-    ndvi_contrasted = contrast_stretch(ndvi)
-    
-    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
-    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
-    print(image_contr_ndvi)
-
-    color_mapped_prep = ndvi_contrasted.astype(np.uint8)
-    color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
-
-    image_color_map = image_contr_ndvi[:-4] + "-color_map.jpg"
-    cv2.imwrite(image_color_map, color_mapped_image)
-
-    print("fatto.\n\n")
-    
 if __name__ == '__main__':
     
     base_folder = Path(__file__).parent.resolve()
@@ -129,6 +156,19 @@ if __name__ == '__main__':
     image_original = str(base_folder) + image_name +'.jpg'
 
     img_master = loadImage(image_original)
+    imgSize = getImageSize(img_master)
+
+    #lx, ly = 78, 190
+    lx, ly = 6, 5
+    print(f'Setting rect size to {(lx, ly)}\n')
+
+    n, nx, ny = calculateHowManyRect(imgSize, lx, ly)
+    print(f'Number of rectangles {n}. nx = {nx}, ny = {ny}\n')
+
+    x, y = 0, 0
+    while haveRect(x, y, lx, ly, imgSize):
+        # print(f'processing rect {(x, y, lx, ly)}')
+        x, y = processRect(x, y, lx, ly, img_master, imgSize)
 
     name_image_clear = str(base_folder) + image_name + '-clear.jpg' 
 
@@ -182,3 +222,12 @@ if __name__ == '__main__':
     cv2.imwrite(image_color_map, color_mapped_image)
 
     print("fatto.\n\n")
+
+
+'''
+    print("processo l'immagine modificata\n\n")
+    contrasted = contrast(img_clear, name_image_clear)
+    ndvi_contrasted = contrastNdvi(contrasted, name_image_clear)
+    color_mapped_image = colorMapping(ndvi_contrasted, name_image_clear)
+    print("fatto.\n\n")
+'''
