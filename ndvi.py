@@ -20,14 +20,11 @@ from pathlib import Path
 # le funzioni che seguono servono ad annulare i possibili errori di valutaizone
 # di ndvi sull'immagine originale.
 
-""""
 def loadImage(filename):
     print(f'try to load image {filename}')
     img = Image.open(filename).copy()
     print(f'{filename} loaded and copied\n')
     return img
-"""
-filename = input('Inserisci il nome del file: ')
 
 def saveImage(filename, img):
     print(f'saving {filename}')
@@ -124,21 +121,64 @@ def ndviConversion(image):
 
     print("fatto.\n\n")
     
-def main_function():
+if __name__ == '__main__':
     
     base_folder = Path(__file__).parent.resolve()
 
-    image_name = '/images'
+    image_name = '/images/image-test'
     image_original = str(base_folder) + image_name +'.jpg'
-    print(image_original)
-    print(image_name)
-    
-    #loadImage()
-    contrast_stretch()
-    calc_ndvi()
-    contrast()
-    contrastNdvi()
-    colorMapping()
-    ndviConversion()
 
-main_function()
+    img_master = loadImage(image_original)
+
+    name_image_clear = str(base_folder) + image_name + '-clear.jpg' 
+
+    saveImage(name_image_clear, img_master)
+
+    img_master = cv2.imread(image_original)
+    img_clear = cv2.imread(name_image_clear)
+    
+    print("processo l'immagine originale\n")
+    contrasted = contrast_stretch(img_master)
+
+    image_contrasted = image_original[:-4] + "-contrasted.jpg"   
+    cv2.imwrite(image_contrasted, contrasted)
+
+    ndvi = calc_ndvi(contrasted)
+    ndvi_contrasted = contrast_stretch(ndvi)
+    
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
+    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
+
+    color_mapped_prep = ndvi_contrasted.astype(np.uint8)
+    color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
+
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
+    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
+
+    image_color_map = image_contr_ndvi[:-4] + "-color_map.jpg"
+    cv2.imwrite(image_color_map, color_mapped_image)
+
+    print("fatto.\n\n")
+
+    print("processo l'immagine modificata\n")
+    contrasted = contrast_stretch(img_clear)
+
+    image_contrasted = name_image_clear[:-4] + "-contrasted.jpg"   
+    cv2.imwrite(image_contrasted, contrasted)
+
+    ndvi = calc_ndvi(contrasted)
+    ndvi_contrasted = contrast_stretch(ndvi)
+    
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
+    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
+
+    color_mapped_prep = ndvi_contrasted.astype(np.uint8)
+    color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
+
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
+    cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
+
+    image_color_map = image_contr_ndvi[:-4] + "-color_map.jpg"
+    cv2.imwrite(image_color_map, color_mapped_image)
+
+    print("fatto.\n\n")
