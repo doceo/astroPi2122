@@ -125,7 +125,7 @@ if __name__ == '__main__':
     
     base_folder = Path(__file__).parent.resolve()
 
-    image_name = '/images/*'
+    image_name = '/images/51845820403_7006e2b61e_o'
     image_original = str(base_folder) + image_name +'.jpg'
 
     img_master = loadImage(image_original)
