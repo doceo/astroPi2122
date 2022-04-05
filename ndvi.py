@@ -125,7 +125,7 @@ if __name__ == '__main__':
     
     base_folder = Path(__file__).parent.resolve()
 
-    image_name = '/images/51845820403_7006e2b61e_o'
+    image_name = '/images/image-test'
     image_original = str(base_folder) + image_name +'.jpg'
 
     img_master = loadImage(image_original)
@@ -140,22 +140,22 @@ if __name__ == '__main__':
     print("processo l'immagine originale\n")
     contrasted = contrast_stretch(img_master)
 
-    image_contrasted = image_original[:-23] + "-contrasted.jpg"   
+    image_contrasted = image_original[:-4] + "-contrasted.jpg"   
     cv2.imwrite(image_contrasted, contrasted)
 
     ndvi = calc_ndvi(contrasted)
     ndvi_contrasted = contrast_stretch(ndvi)
     
-    image_contr_ndvi = image_contrasted[:-23] + "-ndvi.jpg"
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
     cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
 
     color_mapped_prep = ndvi_contrasted.astype(np.uint8)
     color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
 
-    image_contr_ndvi = image_contrasted[:-23] + "-ndvi.jpg"
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
     cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
 
-    image_color_map = image_contr_ndvi[:-23] + "-color_map.jpg"
+    image_color_map = image_contr_ndvi[:-4] + "-color_map.jpg"
     cv2.imwrite(image_color_map, color_mapped_image)
 
     print("fatto.\n\n")
@@ -163,22 +163,22 @@ if __name__ == '__main__':
     print("processo l'immagine modificata\n")
     contrasted = contrast_stretch(img_clear)
 
-    image_contrasted = name_image_clear[:-23] + "-contrasted.jpg"   
+    image_contrasted = name_image_clear[:-4] + "-contrasted.jpg"   
     cv2.imwrite(image_contrasted, contrasted)
 
     ndvi = calc_ndvi(contrasted)
     ndvi_contrasted = contrast_stretch(ndvi)
     
-    image_contr_ndvi = image_contrasted[:-23] + "-ndvi.jpg"
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
     cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
 
     color_mapped_prep = ndvi_contrasted.astype(np.uint8)
     color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
 
-    image_contr_ndvi = image_contrasted[:-23] + "-ndvi.jpg"
+    image_contr_ndvi = image_contrasted[:-4] + "-ndvi.jpg"
     cv2.imwrite(image_contr_ndvi, ndvi_contrasted)
 
-    image_color_map = image_contr_ndvi[:-23] + "-color_map.jpg"
+    image_color_map = image_contr_ndvi[:-4] + "-color_map.jpg"
     cv2.imwrite(image_color_map, color_mapped_image)
 
     print("fatto.\n\n")
