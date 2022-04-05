@@ -88,7 +88,6 @@ catch patches of brighter pixels. To once again enhance the image, it can be run
 Now you can see healthy plant life by the brightness of the pixels in the ndvi_contrasted.png image.
 """
 
-
 def colorMapping(ndvi_contrasted):
     # Now the image can be converted using cv2 colour mapping, and written out as a new file
     color_mapped_prep = ndvi_contrasted.astype(np.uint8)
@@ -131,5 +130,13 @@ def main_function():
     image_original = str(base_folder) + image_name +'.jpg'
     print(image_original)
     print(image_name)
+    
+    loadImage()
+    contrast_stretch()
+    calc_ndvi()
+    contrast()
+    contrastNdvi()
+    colorMapping()
+    ndviConversion()
 
 main_function()
