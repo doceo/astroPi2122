@@ -1,5 +1,6 @@
 # il seguente link spiega il codice
 # https://projects.raspberrypi.org/en/projects/astropi-ndvi
+from fileinput import filename
 import cv2
 from PIL import Image
 import numpy as np
@@ -19,18 +20,20 @@ from pathlib import Path
 # le funzioni che seguono servono ad annulare i possibili errori di valutaizone
 # di ndvi sull'immagine originale.
 
-
+""""
 def loadImage(filename):
     print(f'try to load image {filename}')
     img = Image.open(filename).copy()
     print(f'{filename} loaded and copied\n')
     return img
+"""
+filename = input('Inserisci il nome del file: ')
 
 def saveImage(filename, img):
     print(f'saving {filename}')
     img.save(filename)
     print(f'{filename} saved. bye\n\n')
-
+    
 def contrast_stretch(im):
     # find the top brightness of pixels in the image in the top 5% and bottom 5% of your image.
     in_min = np.percentile(im, 5)
@@ -45,8 +48,7 @@ def contrast_stretch(im):
     out = im - in_min
     out *= ((out_min - out_max) / (in_min - in_max))
     out += in_min
-    return out
-
+    return 
 
 def calc_ndvi(image):
     # To adjust the pixels in the image and only work with red and blue, the image needs splitting into its three
@@ -131,7 +133,7 @@ def main_function():
     print(image_original)
     print(image_name)
     
-    loadImage()
+    #loadImage()
     contrast_stretch()
     calc_ndvi()
     contrast()
