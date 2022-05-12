@@ -35,7 +35,7 @@ def main_function():
     while (now_time < start_time + timedelta(minutes=180)):
 
         # Save each lap in log
-    #    logger.info(f'Loop number {loop+1} started')
+        logger.info(f'Loop number {loop+1} started')
 
         # Variables for the dayNight function
         timescale = load.timescale().now()
@@ -53,7 +53,8 @@ def main_function():
             
             # Capturing the images
             try: 
-                capture(path_image, data_file, 0)
+                camera.capture(f"{save_file}")
+                #capture(path_image, data_file, 0)
             except Exception as e:
                 logger.error(f'{e.__class__.__name__}: {e}')
             
