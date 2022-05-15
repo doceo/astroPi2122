@@ -34,7 +34,7 @@ def capture(imName, dFile, test):
         row = (name_image, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
         
         # Adding the image correlated data to the CSV file
-        add_csv_data(dFile, row)
+        #add_csv_data(dFile, row) aggiungere file al database
         print(row)
         
         # Capturing the image
