@@ -32,7 +32,7 @@ def main_function(dFile):
     loop = 0
 
     # Run loop for three hours
-    while (now_time < start_time + timedelta(minutes=1)):
+    while (now_time < start_time + timedelta(minutes=0.5)):
 
         # Save each lap in log
         logger.info(f'Loop number {loop+1} started')
