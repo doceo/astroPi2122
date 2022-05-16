@@ -54,7 +54,6 @@ def main_function(dFile):
             
             # Obtain the current ISS coordinates
             location = ISS.coordinates()
-            print(location)
 
             # Collect and add the coordinates, related to the captured photo, to the csv
             row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
