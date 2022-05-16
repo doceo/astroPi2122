@@ -14,7 +14,7 @@ from time import sleep
 from datetime import datetime, timedelta
 
 # Defining the main function
-def main_function():
+def main_function(dFile):
 
     # Initialise the CSV file
     base_folder = Path(__file__).parent.resolve()
@@ -51,6 +51,26 @@ def main_function():
             # Determine the path and name of the images
             image_name = str(datetime.now().strftime("%Y%m%d-%H%M%S"))
             path_image = str(base_folder) + '/images/' + image_name            
+            
+            # Obtain the current ISS coordinates
+            location = ISS.coordinates()
+            print(location)
+
+            # Collect and add the coordinates, related to the captured photo, to the csv
+            row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
+        
+            # Adding the image correlated data to the CSV file
+            add_csv_data(dFile, row)
+            
+            r = redis.StrictRedis(host= "93.145.175.242", port= "63213", password='1357642rVi0', db= 0)
+        
+            r.keys()
+
+            r.set(image_name, row)
+
+            value = row
+            
+            print(value)
             
             # Capturing the images
             try: 
