@@ -28,17 +28,6 @@ def capture(imName, dFile, test):
         camera = PiCamera()
         camera.resolution = (4056, 3040)
         
-        # Obtain the current ISS coordinates
-        location = ISS.coordinates()
-        print(location)
-
-        # Collect and add the coordinates, related to the captured photo, to the csv
-        row = (name_image, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
-        
-        # Adding the image correlated data to the CSV file
-        add_csv_data(dFile, row)
-        print(row)
-        
         # Capturing the image
         camera.capture(f"{save_file}")
         
