@@ -69,8 +69,6 @@ def main_function(dFile):
 
             value = row
             
-            print(value)
-            
             # Capturing the images
             try: 
                 camera.capture(f"{save_file}")
