@@ -56,8 +56,7 @@ def capture(imName, dFile, test):
 
         r.set(name_image, row)
 
-        value = r.get(name_image)
-
+        value = row
         print(value)
         
         return True
