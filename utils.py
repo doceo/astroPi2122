@@ -9,6 +9,8 @@ import csv
 from picamera import PiCamera
 from time import sleep
 
+import redis
+
 # Define the function for capturing the images
 def capture(imName, dFile, test):
 
@@ -19,7 +21,7 @@ def capture(imName, dFile, test):
         ** save_file, is the image's name 
         """
 
-        name_image = imName.split('/')[5]
+        name_image = imName.split('/')[6]
         save_file = imName + ".jpg"
         
         # Variables for Picamera
@@ -34,7 +36,7 @@ def capture(imName, dFile, test):
         row = (name_image, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
         
         # Adding the image correlated data to the CSV file
-        #add_csv_data(dFile, row) aggiungere file al database
+        add_csv_data(dFile, row)
         print(row)
         
         # Capturing the image
@@ -45,6 +47,18 @@ def capture(imName, dFile, test):
         
         # Camera warm-up time
         sleep(2)
+
+        r = redis.StrictRedis(host= "93.145.175.242", port= "63213", password='1357642rVi0', db= 0)
+        
+        r.keys()
+
+        #f = open(data_file, row)
+
+        r.set(name_image, row)
+
+        value = r.get(name_image)
+
+        print(value)
         
         return True
 

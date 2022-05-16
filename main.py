@@ -32,7 +32,7 @@ def main_function():
     loop = 0
 
     # Run loop for three hours
-    while (now_time < start_time + timedelta(minutes=180)):
+    while (now_time < start_time + timedelta(minutes=1)):
 
         # Save each lap in log
         logger.info(f'Loop number {loop+1} started')
@@ -41,7 +41,8 @@ def main_function():
         timescale = load.timescale().now()
         # Load ephemeris (high accuracy table with position of celestial objects)
         ephemeris = load('de421.bsp')
-        light = dayNight()
+        #light = dayNight()
+        light= True
 
         # If the ISS is orbiting above the illuminated part of the earth run this code
         if light == True:
