@@ -14,7 +14,7 @@ from time import sleep
 from datetime import datetime, timedelta
 
 # Defining the main function
-def main_function(dFile):
+def main_function():
 
     # Initialise the CSV file
     base_folder = Path(__file__).parent.resolve()
@@ -59,7 +59,7 @@ def main_function(dFile):
             row = (image_name, location.latitude.degrees, location.longitude.degrees, location.elevation.km)
         
             # Adding the image correlated data to the CSV file
-            add_csv_data(dFile, row)
+            #add_csv_data(row)
             
             r = redis.Redis(host= '93.145.175.242', port= 63213, password='1357642rVi0', db= 0)
         
