@@ -1,6 +1,6 @@
-import redis_f
+import redis
 
-r = redis_f.Redis(host= '93.145.175.242', port= 63213, password='1357642rVi0', db= 0)
+r = redis.Redis(host= '93.145.175.242', port= 63213, password='1357642rVi0', db= 0)
 
 r.keys()
 
