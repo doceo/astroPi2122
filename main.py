@@ -13,8 +13,6 @@ from time import sleep
 # Module for the while loop
 from datetime import datetime, timedelta
 
-import redis
-
 # Defining the main function
 def main_function(dFile):
 
