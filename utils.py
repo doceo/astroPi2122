@@ -9,8 +9,6 @@ import csv
 from picamera import PiCamera
 from time import sleep
 
-import redis
-
 # Define the function for capturing the images
 def capture(imName, dFile, test):
 
