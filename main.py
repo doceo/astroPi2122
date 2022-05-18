@@ -63,7 +63,7 @@ def main_function():
             # Adding the image correlated data to the CSV file
             #add_csv_data(row)
             
-            r = redis.Redis(host= '93.145.175.242', port= 63213, password='1357642rVi0', db= 0)
+            r = redis_f.Redis(host= '93.145.175.242', port= 63213, password='1357642rVi0', db= 0)
         
             r.keys()
 
