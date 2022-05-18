@@ -1,6 +1,6 @@
 import redis
 
-r = redis.StrictRedis(host= "", port= "", db= 0)
+r = redis.StrictRedis(host= '93.145.175.242', port= 63213,password='1357642rVi0', db= 0)
 
 r.keys()
 
