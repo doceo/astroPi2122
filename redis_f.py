@@ -5,8 +5,6 @@ r = redis.StrictRedis(host= '93.145.175.242', port= 63213, password='1357642rVi0
 # inizializzo la lista delle chiavi del DB
 r.keys()
 
-# r.set('chiave, "valore')
-
 graziella=[]
     
 giorgio=str(graziella)    
@@ -17,6 +15,8 @@ for i in range (3):
      r.set(image_name, row)
      value = r.get(image_name)
      graziella.append(value)
+     r.incr('count')
+     print(r.get('count'))
      
 
 print(graziella)
